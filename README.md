@@ -3,19 +3,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚡ BerMatMods - Creador de Servidores HTTP Injector</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Roboto+Mono:wght@300;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #101010;
+            background: url('https://i.postimg.cc/8czJWtZw/futuristic-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #00e676;
-            font-family: 'Roboto Mono', monospace;
-            padding: 20px;
+            font-family: 'Orbitron', sans-serif;
             overflow-x: hidden;
-            animation: background-glow 5s infinite alternate;
+            padding: 20px;
         }
-        @keyframes background-glow {
-            0% { background-color: #101010; }
-            100% { background-color: #0d1f0d; }
+        h1 {
+            font-size: 3em;
+            color: #00ffea;
+            text-align: center;
+            text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea, 0 0 40px #00ffea;
+            margin-bottom: 30px;
         }
         .banner {
             width: 100%;
@@ -24,78 +27,102 @@
             margin: 20px auto;
             border-radius: 15px;
             box-shadow: 0 0 20px #00e676;
-            transition: transform 0.3s, box-shadow 0.3s;
             animation: float 6s ease-in-out infinite alternate;
         }
         @keyframes float {
             0% { transform: translateY(0); }
             100% { transform: translateY(-15px); }
         }
-        h1 {
-            font-family: 'Rubik Glitch', cursive;
-            font-size: 3em;
-            color: #00e676;
-            text-align: center;
-            margin-bottom: 20px;
-            animation: glow 2s infinite alternate;
-        }
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #00e676, 0 0 20px #00e676, 0 0 30px #00e676, 0 0 40px #00e676; }
-            100% { text-shadow: 0 0 20px #00b248, 0 0 30px #00b248, 0 0 40px #00b248, 0 0 50px #00b248; }
-        }
-        .notice {
-            background-color: #222;
+        .server-options {
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px #00e676;
+        }
+        .server-options button {
+            background-color: #00e676;
+            color: #101010;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
             border-radius: 10px;
-            margin-bottom: 20px;
-            color: #ff5722;
             font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .server-options button:hover {
+            background-color: #00ffea;
+            transform: scale(1.05);
+        }
+        .verification {
+            background-color: rgba(255, 0, 100, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 0 30px #ff007f;
+            font-weight: bold;
+        }
+        .input-code {
+            width: 80%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 2px solid #00e676;
+            background-color: #222;
+            color: #00e676;
             font-family: 'Rubik Glitch', cursive;
-            box-shadow: 0 0 20px #ff5722;
-            animation: pulse 4s infinite alternate;
+            font-size: 1em;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
-        }
-        .notice a {
-            color: #ff5722;
-            text-decoration: none;
+        .submit-button {
+            background-color: #00e676;
+            color: #101010;
+            padding: 15px 30px;
+            border-radius: 10px;
             font-weight: bold;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
         }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+        .submit-button:hover {
+            background-color: #00ffea;
+            transform: scale(1.05);
         }
-        .social-icons a {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 0 15px #00e676;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .social-icons a:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px #00e676, 0 0 40px #00e676;
+        .error-message {
+            color: #ff007f;
+            font-weight: bold;
+            margin-top: 15px;
         }
     </style>
+    <script>
+        function verificarCodigo() {
+            const codigo = document.getElementById('codigo').value;
+            if (codigo === 'BerMat123') {
+                alert('✅ Acceso concedido. Bienvenido a BerMatMods!');
+            } else {
+                document.getElementById('error').innerHTML = '❌ Código incorrecto. Para poder acceder a este contenido debes comprar el acceso a través de mi creador. <a href="https://wa.me/937556459?text=**Hola%20buen%20día%20AnthZz%20Berrocal,%20Te%20estoy%20contactando%20para%20obtener%20el%20código%20de%20verificación%20para%20crear%20mis%20servidores%20VIP%20de%20BerMatModZ**" style="color: #ff007f; font-weight: bold;">Clic aquí para comprar</a>';
+            }
+        }
+    </script>
 </head>
 <body>
     <img src="https://i.postimg.cc/2SPGgB0B/Mag-Pic-20250501-185936660-2.jpg" alt="BerMatMods Banner" class="banner">
     <h1>⚡ BerMatMods - Creador de Servidores HTTP Injector ⚡</h1>
-    <div class="notice">
-        <p>⚠️ Si no tienes el código de verificación, debes <a href="https://wa.me/937556459?text=**Hola%20buen%20día%20AnthZz%20Berrocal,%20Te%20estoy%20contactando%20para%20poder%20comprar%20el%20servicio%20para%20poder%20crear%20mis%20servidores%20VIP%20de%20BerMatModZ**">contactarte o comprarlo con mi creador</a>. ¡No pierdas tiempo y únete al mundo de BerMatMods! ⚠️</p>
+    <div class="server-options">
+        <button>Crear Servidor para Bitel</button>
+        <button>Crear Servidor para Entel</button>
+        <button>Crear Servidor para Claro</button>
+        <button>Crear Servidor para Movistar</button>
     </div>
-    <div class="social-icons">
-        <a href="https://wa.me/937556459" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
-        <a href="https://www.facebook.com/anthzberrocal" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook"></a>
-        <a href="https://www.instagram.com/anthzberrocal" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
-        <a href="https://github.com/Anthzberrocal" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub"></a>
-        <a href="https://t.me/Anthzberrocal" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram"></a>
+    <div class="verification">
+        <p>🔑 Ingrese el código de verificación para acceder:</p>
+        <input type="text" id="codigo" class="input-code" placeholder="Ingrese su código">
+        <button class="submit-button" onclick="verificarCodigo()">Verificar</button>
+        <p id="error" class="error-message"></p>
     </div>
 </body>
 </html>
