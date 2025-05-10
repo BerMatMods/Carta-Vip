@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Orbitron:wght@500&family=Monoton&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('https://i.postimg.cc/6qFj9WzL/futuristic-lights.jpg') no-repeat center center fixed;
+            background: url('https://i.postimg.cc/Y0KsXgT1/futuristic-background.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #00e676;
             font-family: 'Rubik Glitch', sans-serif;
@@ -29,7 +29,7 @@
             border-radius: 15px;
             box-shadow: 0 0 20px #00e676;
         }
-        .info-box {
+        .info-box, .services {
             background-color: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 15px;
@@ -106,11 +106,24 @@
             color: #00e676;
             text-shadow: 0 0 10px #00e676, 0 0 20px #00e676;
         }
+        .service-item {
+            margin: 15px 0;
+            font-size: 1.2em;
+            color: #00ffea;
+            text-shadow: 0 0 5px #00ffea, 0 0 10px #00ffea;
+        }
     </style>
 </head>
 <body>
     <img src="https://i.postimg.cc/2SPGgB0B/Mag-Pic-20250501-185936660-2.jpg" alt="BerMatMods Banner" class="banner">
     <h1>⚡ BerMatMods - Creador de Servidores HTTP Injector ⚡</h1>
+    <div class="services">
+        <h2>📶 Servicios Disponibles:</h2>
+        <p class="service-item">⚡ Bitel</p>
+        <p class="service-item">⚡ Entel</p>
+        <p class="service-item">⚡ Claro</p>
+        <p class="service-item">⚡ Movistar</p>
+    </div>
     <div class="info-box">
         <p>🔰 Creador: Anth'Zz Berrocal</p>
         <p>🛡️ Proyecto: BerMatModZ</p>
