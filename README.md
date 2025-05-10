@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Orbitron:wght@500&family=Monoton&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('https://i.postimg.cc/Y0KsXgT1/futuristic-background.jpg') no-repeat center center fixed;
+            background: radial-gradient(circle, #000000 30%, #111111 100%);
             background-size: cover;
             color: #00e676;
             font-family: 'Rubik Glitch', sans-serif;
@@ -126,10 +126,10 @@
     </div>
     <div class="info-box">
         <p>🔰 Creador: Anth'Zz Berrocal</p>
-        <p>🛡️ Proyecto: BerMatModZ</p>
-        <p>📱 Contacto: <a href="https://wa.me/937556459?text=**Hola%20buen%20día%20AnthZz%20Berrocal,%20Te%20estoy%20contactando%20para%20obtener%20el%20código%20de%20verificación%20para%20crear%20mis%20servidores%20VIP%20de%20BerMatModZ**" class="contact-link">Clic aquí para contactar</a></p>
+        <p>🛡️ Proyecto: Para tener internet ilimitado BerMatModZ</p>
+        <p>📱 Contacto: <a href="https://wa.me/937556459?text=*Hola%20buen%20día%20AnthZz%20Berrocal,%20Te%20estoy%20contactando%20para%20obtener%20el%20código%20de%20verificación%20para%20crear%20mis%20servidores%20VIP%20de%20BerMatModZ*" class="contact-link">Clic aquí para contactar</a></p>
     </div>
-    <div class="whatsapp-box" onclick="window.location.href='https://wa.me/937556459?text=**Hola%20buen%20día%20AnthZz%20Berrocal,%20Te%20estoy%20contactando%20para%20obtener%20el%20código%20de%20verificación%20para%20crear%20mis%20servidores%20VIP%20de%20BerMatModZ**'">
+    <div class="whatsapp-box" onclick="window.location.href='https://wa.me/937556459?text=*Hola%20buen%20día%20AnthZz%20Berrocal,%20Te%20estoy%20contactando%20para%20obtener%20el%20código%20de%20verificación%20para%20crear%20mis%20servidores%20VIP%20de%20BerMatModZ*'">
         🔑 <strong>Haz clic aquí para obtener código de acceso</strong> 🔑
     </div>
     <div class="verification">
