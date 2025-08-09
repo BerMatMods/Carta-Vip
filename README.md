@@ -1,302 +1,342 @@
-<!DOCTYPE html><html lang="es">
+<!doctype html>
+<html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>⚡ BerMatModZ • Anth'Zz Berrocal ⚡</title>
-  <meta name="description" content="Portfolio profesional de Anth'Zz Berrocal — BerMatModZ. Bots, automatización, ciberseguridad, IA y servicios técnicos." />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Rajdhani:wght@400;600&family=Space+Grotesk:wght@300;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta name="description" content="BerMatModZ - Portfolio: bots, automatizaciones, ciberseguridad e IA.">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg1:#03030a; --bg2:#0f0c29; --neon:#00ffe1; --accent:#8a2be2; --muted:#a7dfe0;
-      --card:rgba(255,255,255,0.03); --glass:rgba(255,255,255,0.04); --radius:14px; --maxw:1100px;
+      --bg:#05050a; --card:rgba(255,255,255,0.03); --neon:#00ffe1; --accent:#8a2be2; --muted:#9fe;
+      --maxw:1150px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
-    body{
-      font-family:'Rajdhani',system-ui,Segoe UI,Roboto,Arial;
-      background:linear-gradient(180deg,var(--bg1),var(--bg2));
-      color:#eaf9f9; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; overflow-x:hidden;
-    }/* CANVAS LAYERS */
-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
-
-/* CONTAINER */
-.wrap{max-width:var(--maxw);margin:28px auto;padding:20px;position:relative;z-index:5}
-
-/* HEADER */
-header{display:flex;align-items:center;justify-content:space-between;padding:18px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.03);box-shadow:0 18px 60px rgba(0,0,0,0.6)}
-.brand{display:flex;gap:14px;align-items:center}
-.logo{font-family:'Orbitron';font-size:1.8rem;color:var(--neon);padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);box-shadow:0 6px 20px rgba(0,255,225,0.03)}
-.brand .meta{font-family:'Share Tech Mono';color:var(--muted);font-size:0.95rem}
-
-/* MAIN HERO */
-.hero{display:grid;grid-template-columns:340px 1fr;gap:22px;margin-top:20px}
-.card{background:var(--card);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.65)}
-
-.photo{width:300px;height:300px;border-radius:12px;object-fit:cover;border:3px solid rgba(0,0,0,0.35);display:block}
-.hero-title{font-family:'Orbitron';font-size:2.6rem;color:var(--neon);margin:6px 0}
-.subtitle{font-size:1.15rem;color:#dff9f8;margin-bottom:10px}
-.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.badge{background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);padding:8px 12px;border-radius:999px;font-family:'Share Tech Mono';font-size:0.95rem}
-
-/* DETAILS */
-.detail{font-size:1.05rem;line-height:1.6;color:#eafdfc}
-.muted{color:#bfe}
-
-/* PROJECTS */
-.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.project{padding:16px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);transition:transform .28s,box-shadow .28s}
-.project h3{font-family:'Orbitron';color:var(--accent);margin:0 0 8px}
-.project p{color:#dfe}
-.taglist{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.tag{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-family:'Share Tech Mono';font-size:0.9rem}
-
-/* SERVICES */
-.services{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-.service{flex:1;min-width:220px;padding:14px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.02)}
-.service h4{font-family:'Orbitron';color:var(--neon);margin:0 0 8px}
-.service p{font-size:0.98rem;color:#dfe}
-
-/* SOCIALS + CTA */
-.cta-row{display:flex;gap:12px;align-items:center;margin-top:14px}
-.btn{padding:12px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
-.btn-primary{background:linear-gradient(90deg,var(--neon),#00bfff);color:#001}
-.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#e6f9f9}
-.socials{display:flex;gap:10px;align-items:center}
-.socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.02)}
-.socials img{width:28px;height:28px}
-
-/* LOGIN MODAL (console style) */
-.modal{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(0,0,0,0.75),rgba(0,0,0,0.9));z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
-.modal.show{opacity:1;pointer-events:auto}
-.modal-card{width:94%;max-width:720px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 30px 80px rgba(0,0,0,0.9)}
-.console{background:#071018;padding:14px;border-radius:10px;color:#7ef9e0;font-family:'Share Tech Mono';font-size:0.98rem;min-height:120px}
-.form{display:grid;gap:10px;margin-top:12px}
-.form input{padding:12px;border-radius:8px;border:none;background:rgba(255,255,255,0.03);color:#e8f9f9}
-.oauth{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-
-/* FOOTER */
-footer{margin-top:34px;padding:18px;text-align:center;color:#bcd}
-
-/* EFFECTS */
-.blink{animation:blink 1.6s infinite}
-@keyframes blink{0%{opacity:1;text-shadow:0 0 12px var(--neon)}50%{opacity:0.85;text-shadow:0 0 30px var(--neon)}100%{opacity:1;text-shadow:0 0 12px var(--neon)}}
-
-/* RESPONSIVE */
-@media (max-width:980px){.hero{grid-template-columns:1fr}.projects{grid-template-columns:repeat(2,1fr)}.photo{width:240px;height:240px}}
-@media (max-width:640px){.projects{grid-template-columns:1fr}.photo{width:200px;height:200px}.hero-title{font-size:1.6rem}}
-
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#03030a,#0f0c29 50%,#141126 100%);color:#eaf9f9;font-family:'Space Grotesk',system-ui,Arial;}
+    a{color:inherit}
+    /* canvases are behind everything */
+    canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:18px;position:relative;z-index:2}
+    /* header */
+    .header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.65)}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{font-family:'Orbitron';font-size:1.6rem;color:var(--neon);padding:8px 12px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent)}
+    .meta{font-family:'Space Grotesk';color:var(--muted);font-size:0.95rem}
+    .cta-row{display:flex;gap:10px;align-items:center}
+    .btn{padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--neon),#00bfff);color:#001}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#e6f9f9}
+    /* hero */
+    .hero{display:grid;grid-template-columns:320px 1fr;gap:20px;margin-top:18px;align-items:start}
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+    .photo{width:300px;height:300px;border-radius:12px;object-fit:cover;border:3px solid rgba(0,0,0,0.35);display:block}
+    .hero-title{font-family:'Orbitron';font-size:2.4rem;color:var(--neon);margin:6px 0}
+    .subtitle{font-size:1.05rem;color:#dff9f8;margin-bottom:10px}
+    .badge{display:inline-block;padding:8px 12px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);font-family:'Space Grotesk';margin:6px 6px 0 0}
+    .detail{font-size:1.02rem;line-height:1.6;color:#eafdfc}
+    /* sections */
+    .section{margin-top:26px}
+    h2{font-family:'Orbitron';font-size:1.8rem;color:var(--neon);text-align:center;margin-bottom:12px}
+    .info-box{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 40px rgba(0,0,0,0.6);font-size:1.05rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+    .proj{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01),transparent);transition:transform .28s}
+    .proj:hover{transform:translateY(-8px)}
+    .proj h3{font-family:'Orbitron';margin:0 0 8px 0;color:var(--accent)}
+    .tag{display:inline-block;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;margin-right:8px;font-family:'Space Grotesk';font-size:0.9rem}
+    /* socials */
+    .socials{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .socials a{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;text-decoration:none;background:linear-gradient(90deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.02)}
+    .socials img{width:28px;height:28px}
+    /* footer */
+    footer{margin-top:30px;padding:18px;text-align:center;color:#bcd}
+    /* login fullscreen overlay */
+    #screenLogin{position:fixed;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.9));z-index:999;display:flex;align-items:center;justify-content:center;padding:20px}
+    #loginCard{width:100%;max-width:900px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.04);display:grid;grid-template-columns:1fr 1fr;gap:12px;box-shadow:0 50px 120px rgba(0,0,0,0.9)}
+    .consoleLeft{background:#071018;padding:14px;border-radius:10px;color:#7ef9e0;font-family:'Space Grotesk', monospace;min-height:260px}
+    .formRight{padding:8px;display:flex;flex-direction:column;gap:10px;align-items:stretch}
+    .formRight input{padding:12px;border-radius:8px;border:none;background:rgba(255,255,255,0.03);color:#e8f9f9;font-size:1rem}
+    .oauthButtons{display:flex;gap:8px}
+    .smallLink{font-size:0.9rem;color:var(--neon);cursor:pointer}
+    /* matrix letter size tuning */
+    .matrix-large{font-size:20px}
+    /* responsive */
+    @media(max-width:940px){
+      .hero{grid-template-columns:1fr}
+      #loginCard{grid-template-columns:1fr;max-width:420px}
+      .photo{width:240px;height:240px;margin:0 auto}
+      .matrix-large{font-size:16px}
+    }
   </style>
 </head>
 <body>
-  <!-- Canvas layers (matrix + particles) -->
+
+  <!-- CANVASES -->
   <canvas id="matrixCanvas"></canvas>
-  <canvas id="particlesCanvas"></canvas>  <div class="wrap">
-    <header class="header">
+  <canvas id="particlesCanvas"></canvas>
+
+  <!-- FULLSCREEN LOGIN (se mostrará al cargar) -->
+  <div id="screenLogin" role="dialog" aria-modal="true">
+    <div id="loginCard" aria-label="Login Card">
+      <div class="consoleLeft">
+        <h3 style="font-family:Orbitron;color:var(--neon);margin:0 0 8px 0">⚡ Bienvenido a BerMatModZ</h3>
+        <p style="margin:6px 0;color:#bfe">Inicia sesión para acceder al portfolio y herramientas. Si no tienes cuenta, regístrate aquí.</p>
+        <div id="consoleLines" style="margin-top:12px;font-size:0.95rem;line-height:1.45;color:#9fe">
+          <div>» Sistema: Interfaz segura</div>
+          <div>» Respaldo: Anonymous</div>
+          <div>» Integración: WhatsApp • OAuth • Notificaciones por Gmail</div>
+        </div>
+        <div style="margin-top:14px">
+          <small style="color:#88e">Consejo: para probar registro rápido usa cualquier correo válido y luego revisa tu Gmail (si configuras el backend).</small>
+        </div>
+      </div>
+
+      <div class="formRight">
+        <h3 style="font-family:Orbitron;color:var(--neon);margin:0">Iniciar sesión</h3>
+        <form id="authForm">
+          <input id="nameField" type="text" placeholder="Nombre (solo para registro)" style="display:none">
+          <input id="emailField" type="email" placeholder="Correo electrónico" required>
+          <input id="passField" type="password" placeholder="Contraseña" required>
+          <div style="display:flex;gap:8px">
+            <button type="submit" class="btn btn-primary" style="flex:1">Entrar</button>
+            <button id="showRegisterBtn" type="button" class="btn btn-ghost" style="flex:1">Registrarse</button>
+          </div>
+        </form>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+          <a id="forgotBtn" class="smallLink">¿Olvidaste tu contraseña?</a>
+          <div class="oauthButtons" style="margin-left:auto">
+            <button class="btn" onclick="oauth('google')" style="background:linear-gradient(90deg,#ff4b2b,#ff416c);color:#fff">Google</button>
+            <button class="btn" onclick="oauth('facebook')" style="background:linear-gradient(90deg,#1877f2,#4c69ba);color:#fff">Facebook</button>
+          </div>
+        </div>
+
+        <small style="color:#9ee;display:block;margin-top:10px">Al iniciar, tu sesión será verificada por el servidor y se enviará una notificación a tu Gmail configurado (si el backend está activo).</small>
+        <div style="margin-top:8px;display:flex;gap:8px">
+          <button id="enterAsGuest" class="btn btn-ghost" style="flex:1">Entrar como visitante</button>
+          <a href="#mainContent" id="skipLogin" class="btn btn-ghost" style="flex:1;text-align:center">Ver demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="wrap" id="mainContent" style="opacity:0;transform:translateY(12px);transition:all .6s ease">
+    <div class="header">
       <div class="brand">
         <div class="logo">⚡ BerMatModZ ⚡</div>
         <div>
-          <div class="meta">Anth'Zz Berrocal — Líder & Desarrollador • Andahuaylas, Perú</div>
-          <div class="meta">Respaldo: <strong style="color:var(--neon)">Anonymous</strong></div>
+          <div class="meta">Anth'Zz Berrocal — Líder & Desarrollador</div>
+          <div class="meta">Andahuaylas · Perú · Respaldo: <strong style="color:var(--neon)">Anonymous</strong></div>
         </div>
       </div>
       <div class="cta-row">
-        <button class="btn btn-primary" id="openLoginBtn">Iniciar sesión</button>
+        <button class="btn btn-primary" id="openLoginAgain">Iniciar sesión</button>
         <a class="btn btn-ghost" href="https://wa.me/51937556459?text=%2AHola%20AnthZz%20Berrocal%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios%2A" target="_blank">📲 Consultar por WhatsApp</a>
       </div>
-    </header><main class="hero">
-  <aside class="card">
-    <img class="photo" src="https://i.postimg.cc/bvST5wCV/Mag-Pic-20250501-185936660-3.jpg" alt="AnthZz Berrocal">
-    <div style="margin-top:12px;text-align:center">
-      <div class="badge">Creador: <strong>Anth'Zz Berrocal</strong></div>
-      <div class="badge">Alias: <strong>⚡BerMatModZ🔥</strong></div>
-      <div class="badge">Contacto: <strong>+51 937 556 459</strong></div>
-    </div>
-  </aside>
-
-  <section class="card">
-    <h1 class="hero-title blink">⚡ BerMatModZ • Anth'Zz Berrocal</h1>
-    <p class="subtitle">Desarrollador de Bots para WhatsApp, Especialista en Automatización (Termux), IA conversacional, Interfaces visuales y Ciberseguridad aplicada.</p>
-
-    <div class="detail">
-      <p><strong>Resumen profesional:</strong> Soy un desarrollador y consultor enfocado en crear soluciones de automatización, bots conversacionales y herramientas de seguridad y administración para comunicaciones. Trabajo principalmente con Termux, Node.js y Python para desarrollar bots robustos que integren IA y módulos personalizados (juegos, stickers, moderación, auto-respuestas y analítica).</p>
-
-      <p style="margin-top:10px"><strong>Tareas que realizo (detallado):</strong></p>
-      <ul style="line-height:1.6">
-        <li>Diseño e implementación de <strong>bots para WhatsApp</strong> (Termux/WhatsApp-API/MD) con comandos personalizados, juegos (Tres en Raya, Ahorcado), generación de stickers y gestión de menús con estilo.</li>
-        <li>Automatización de tareas con <strong>Python</strong> y <strong>Node.js</strong>: cron jobs, scraping, envíos masivos (legítimos), backups y sincronización de datos.</li>
-        <li>Integración de <strong>IA conversacional</strong> para respuestas naturales, aprendizaje básico y adaptación de tono (romántico, serio, profesional) según el proyecto.</li>
-        <li>Desarrollo de <strong>interfaces visuales</strong> y páginas web estáticas/dinámicas con animaciones y efectos (como esta página).</li>
-        <li>Consultoría en <strong>ciberseguridad básica aplicada</strong>: configuración segura de entornos, buenas prácticas para bots, protección de claves y prevención de fugas de datos.</li>
-        <li>Creación de <strong>experiencias multimedia</strong>: audios generados por TTS, efectos de voz, animaciones y banners para branding.</li>
-      </ul>
     </div>
 
-    <div style="margin-top:14px" class="badges">
-      <div class="badge">Tecnologías: Node.js • Python • Termux</div>
-      <div class="badge">APIs: WhatsApp MD • Webhooks • OAuth</div>
-      <div class="badge">Herramientas: GitHub • Git • Linux</div>
-    </div>
+    <main class="hero">
+      <aside class="card">
+        <img class="photo" src="https://i.postimg.cc/bvST5wCV/Mag-Pic-20250501-185936660-3.jpg" alt="AnthZz Berrocal">
+        <div style="text-align:center;margin-top:12px">
+          <div class="badge">Creador: <strong>Anth'Zz Berrocal</strong></div>
+          <div class="badge">Alias: <strong>⚡BerMatModZ🔥</strong></div>
+          <div class="badge">Contacto: <strong>+51 937 556 459</strong></div>
+        </div>
+      </aside>
 
-    <div class="services" style="margin-top:18px">
-      <div class="service">
-        <h4>Creación de Bots</h4>
-        <p>Desarrollo completo: comandos, menús, juegos, generación de stickers, y personalización de respuestas.</p>
+      <section class="card">
+        <h1 class="hero-title" style="margin-bottom:6px">⚡ BerMatModZ • Anth'Zz Berrocal</h1>
+        <p class="subtitle">Desarrollo de bots, automatizaciones, IA aplicada y soluciones de ciberseguridad con interfaces visuales y experiencia en Termux.</p>
+
+        <div class="detail">
+          <p><strong>Resumen profesional:</strong> Desarrollo bots para WhatsApp con IA integrada, automatización de tareas, creación de interfaces visuales, y consultoría en seguridad aplicada. Trabajo con Node.js, Python y Termux, creando soluciones desmontables y personalizadas para clientes.</p>
+
+          <p style="margin-top:10px"><strong>Tareas y especialidades:</strong></p>
+          <ul style="line-height:1.6">
+            <li>⚙️ Bots WhatsApp (Termux & WhatsApp MD): comandos, menús, juegos, stickers y moderación.</li>
+            <li>🤖 Integración IA: respuestas naturales, aprendizaje básico y adaptación de tono.</li>
+            <li>🔐 Ciberseguridad aplicada: auditorías básicas, buenas prácticas y protección de datos.</li>
+            <li>🔧 Automatización: scripts en Python/Node, backups, sincronización y tareas programadas.</li>
+            <li>🎨 Experiencias visuales: banners, TTS, animaciones y presentaciones interactivas.</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <div class="badge">Node.js</div>
+          <div class="badge">Python</div>
+          <div class="badge">Termux</div>
+          <div class="badge">GitHub</div>
+          <div class="badge">TTS / Audio</div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+          <a class="btn btn-primary" href="https://wa.me/51937556459?text=%2AHola%20AnthZz%20Berrocal%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios%2A" target="_blank">📲 Consultar por WhatsApp</a>
+          <button id="viewProjectsBtn" class="btn btn-ghost">Ver proyectos</button>
+          <div style="margin-left:auto" class="socials">
+            <a href="https://github.com/BerMatMods" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"> GitHub</a>
+            <a href="https://www.instagram.com/king_berrocal" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="IG"> Instagram</a>
+            <a href="https://www.tiktok.com/@tuningcar321" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TT"> TikTok</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- projects -->
+    <section class="section" id="projectsSection">
+      <h2>Proyectos destacados</h2>
+      <div class="grid-3">
+        <div class="proj card">
+          <h3>⚡ BerMat-Bot MD</h3>
+          <p>Bot completo para WhatsApp con IA, juegos, stickers, comandos avanzados y personalización por .BerMat</p>
+          <div style="margin-top:10px"><span class="tag">WhatsApp</span><span class="tag">Termux</span><span class="tag">Node.js</span></div>
+        </div>
+        <div class="proj card">
+          <h3>🧠 F.A.M.A</h3>
+          <p>Plataforma de IA ligera para asistentes, con aprendizaje contextual y módulos personalizables.</p>
+          <div style="margin-top:10px"><span class="tag">IA</span><span class="tag">Integración</span></div>
+        </div>
+        <div class="proj card">
+          <h3>📲 Clonador Estético</h3>
+          <p>Interfaz para demostraciones y pruebas con efectos, TTS y mensajes simulados (uso legítimo y demostrativo).</p>
+          <div style="margin-top:10px"><span class="tag">UI</span><span class="tag">TTS</span></div>
+        </div>
+
+        <div class="proj card">
+          <h3>🎮 Juegos & Utilidades</h3>
+          <p>Tres en Raya, Ahorcado, generadores de stickers y utilidades de moderación.</p>
+          <div style="margin-top:10px"><span class="tag">Juegos</span><span class="tag">Stickers</span></div>
+        </div>
+
+        <div class="proj card">
+          <h3>🌐 Presentaciones Web</h3>
+          <p>Landing pages y presentaciones con animaciones y branding personalizado.</p>
+          <div style="margin-top:10px"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        </div>
+
+        <div class="proj card">
+          <h3>🛠 Servicios Técnicos</h3>
+          <p>Consultoría, despliegue, soporte y documentación para proyectos de automatización y bots.</p>
+          <div style="margin-top:10px"><span class="tag">Soporte</span><span class="tag">Deploy</span></div>
+        </div>
       </div>
-      <div class="service">
-        <h4>Automatización</h4>
-        <p>Flujos automáticos, sincronización de servidores, backups y tareas programadas en Termux o servidores VPS.</p>
+    </section>
+
+    <!-- contact -->
+    <section class="section">
+      <h2>Contacto y redes</h2>
+      <div class="info-box">
+        <p class="detail">WhatsApp: <strong>+51 937 556 459</strong> — Usa el botón para enviar un mensaje prellenado y recibir respuesta rápida.</p>
+        <div style="margin-top:12px" class="socials">
+          <a href="https://wa.me/51937556459?text=%2AHola%20AnthZz%20Berrocal%2C%20vengo%20desde%20tu%20web%2A" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA"> WhatsApp</a>
+          <a href="https://github.com/BerMatMods" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GH"> GitHub</a>
+          <a href="https://www.instagram.com/king_berrocal" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="IG"> Instagram</a>
+        </div>
       </div>
-      <div class="service">
-        <h4>IA & Conversación</h4>
-        <p>Integración de modelos conversacionales para mejorar interacciones y aprendizaje básico del sistema.</p>
-      </div>
-    </div>
+    </section>
 
-    <div class="cta-row" style="margin-top:18px">
-      <a class="btn btn-primary" href="https://wa.me/51937556459?text=%2AHola%20AnthZz%20Berrocal%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20tus%20servicios%2A" target="_blank">📲 Consultar por WhatsApp</a>
-      <button class="btn btn-ghost" id="viewProjects">Ver proyectos</button>
-      <div class="socials" style="margin-left:auto">
-        <a href="https://github.com/BerMatMods" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"> GitHub</a>
-        <a href="https://www.instagram.com/king_berrocal" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="IG"> Instagram</a>
-        <a href="https://www.tiktok.com/@tuningcar321" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TT"> TikTok</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- PROYECTOS -->
-<section class="section">
-  <h2>Proyectos destacados</h2>
-  <div class="projects">
-    <div class="project">
-      <h3>⚡ BerMat-Bot MD</h3>
-      <p>Bot de WhatsApp completo, ejecutable en Termux, con IA integrada, juegos (Tres en Raya), creación de stickers y comandos personalizados. Menu decorado y respuestas avanzadas.</p>
-      <div class="taglist"><span class="tag">WhatsApp</span><span class="tag">Termux</span><span class="tag">Node.js</span></div>
-    </div>
-
-    <div class="project">
-      <h3>🧠 F.A.M.A (IA)</h3>
-      <p>Sistema de apoyo y aprendizaje básico diseñado para integrarse con bots, permitiendo mejorar respuestas y adaptar conversaciones según historial.</p>
-      <div class="taglist"><span class="tag">IA</span><span class="tag">Integración</span><span class="tag">Aprendizaje</span></div>
-    </div>
-
-    <div class="project">
-      <h3>📲 Clonador Estético</h3>
-      <p>Interfaz visual para presentaciones estéticas de conversaciones, con efectos y audios TTS (uso demostrativo y legítimo).</p>
-      <div class="taglist"><span class="tag">UI</span><span class="tag">Animación</span><span class="tag">TTS</span></div>
-    </div>
-
-    <div class="project">
-      <h3>🎮 Juegos & Utilidades</h3>
-      <p>Juegos como Tres en Raya, Ahorcado, generadores de stickers y utilidades de moderación de chats.</p>
-      <div class="taglist"><span class="tag">Juegos</span><span class="tag">Stickers</span><span class="tag">Moderación</span></div>
-    </div>
-
-    <div class="project">
-      <h3>🌐 Presentaciones Web</h3>
-      <p>Landing pages, banners y animaciones para mostrar proyectos y portfolios (esta web es un ejemplo).</p>
-      <div class="taglist"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
-    </div>
-
-    <div class="project">
-      <h3>🛠 Servicios Técnicos</h3>
-      <p>Consultoría, despliegue y soporte técnico para bots y proyectos de automatización.</p>
-      <div class="taglist"><span class="tag">Soporte</span><span class="tag">Deploy</span><span class="tag">Documentación</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- DETALLES TÉCNICOS -->
-<section class="section">
-  <h2>Más sobre mi trabajo</h2>
-  <div class="info">
-    <p class="detail"><strong>Stack y herramientas:</strong> Node.js, Python, Termux, Git, GitHub, APIs REST, Webhooks, OAuth, TTS (espeak, termux-tts), SQLite / JSON for persistence. Experiencia con integración de servicios externos y despliegue en VPS o servicios gratuitos cuando es posible.</p>
-
-    <p class="detail" style="margin-top:10px"><strong>Buenas prácticas:</strong> manejo seguro de tokens, encriptación ligera, backups periódicos, separación de datos sensibles y uso de entornos de prueba antes de producción.</p>
-  </div>
-</section>
-
-<!-- CONTACT / SOCIAL -->
-<section class="section">
-  <h2>Contacto y redes</h2>
-  <div class="info">
-    <p class="detail">Contacto principal (WhatsApp): <strong>+51 937 556 459</strong> — usa el botón para enviar el mensaje prellenado y asegurar respuesta rápida.</p>
-    <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap">
-      <a class="socials" href="https://wa.me/51937556459?text=%2AHola%20AnthZz%20Berrocal%2C%20vengo%20desde%20tu%20web%2A" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA"> WhatsApp</a>
-      <a class="socials" href="https://github.com/BerMatMods" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GH"> GitHub</a>
-      <a class="socials" href="https://www.instagram.com/king_berrocal" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="IG"> Instagram</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2025 ⚡ BerMatModZ ⚡ | Desarrollado por Anth'Zz Berrocal
-</footer>
-
-  </div>  <!-- LOGIN / REGISTER MODAL -->  <div class="modal" id="modal">
-    <div class="modal-card">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div style="font-family:'Orbitron';font-size:1.2rem;color:var(--neon)">Iniciar Sesión / Registrarse</div>
-        <button id="closeModal" style="background:transparent;border:none;color:#ccc;font-weight:700;cursor:pointer">✕</button>
-      </div><div class="console" id="console">
-    Bienvenido. Introduce tus credenciales o usa un inicio rápido con redes.
+    <footer>
+      © 2025 ⚡ BerMatModZ ⚡ | Desarrollado por Anth'Zz Berrocal
+    </footer>
   </div>
 
-  <form class="form" id="authForm">
-    <input type="email" id="email" placeholder="Correo electrónico" required>
-    <input type="password" id="password" placeholder="Contraseña" required>
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-primary" type="submit">Entrar</button>
-      <button type="button" id="showRegister" class="btn btn-ghost">Registrarse</button>
-    </div>
-    <a href="#" id="forgot" style="color:var(--neon);font-weight:700">¿Olvidaste tu contraseña?</a>
-
-    <div class="oauth">
-      <button type="button" onclick="social('google')" style="background:linear-gradient(90deg,#ff4b2b,#ff416c);color:#fff;padding:10px;border-radius:8px;border:none">Iniciar con Google</button>
-      <button type="button" onclick="social('facebook')" style="background:linear-gradient(90deg,#1877f2,#4c69ba);color:#fff;padding:10px;border-radius:8px;border:none">Iniciar con Facebook</button>
-    </div>
-  </form>
-</div>
-
-  </div>  <script>
-    // MATRIX RAIN
+  <script>
+    /* ---------------- Matrix (letras BerMatModZ) ---------------- */
     const matrixCanvas = document.getElementById('matrixCanvas');
-    const matrixCtx = matrixCanvas.getContext('2d');
-    matrixCanvas.width = innerWidth; matrixCanvas.height = innerHeight;
-    const cols = Math.floor(matrixCanvas.width / 20);
-    const drops = Array(cols).fill(0);
+    const mctx = matrixCanvas.getContext('2d');
+    const letters = 'BerMatModZ'.split('');
+    let fontSize = 20; // default
+    function resizeMatrix(){
+      matrixCanvas.width = innerWidth;
+      matrixCanvas.height = innerHeight;
+      fontSize = (innerWidth < 940) ? 16 : 20;
+      columns = Math.floor(matrixCanvas.width / fontSize);
+      drops.length = 0;
+      for(let i=0;i<columns;i++) drops[i]= Math.floor(Math.random()*10);
+      mctx.font = fontSize + 'px Orbitron';
+    }
+    let columns = 0;
+    const drops = [];
+    resizeMatrix();
+    window.addEventListener('resize', resizeMatrix);
     function drawMatrix(){
-      matrixCtx.fillStyle = 'rgba(0,0,0,0.04)'; matrixCtx.fillRect(0,0,matrixCanvas.width,matrixCanvas.height);
-      matrixCtx.fillStyle = '#0ff'; matrixCtx.font = '14px monospace';
+      mctx.fillStyle = 'rgba(0,0,0,0.06)';
+      mctx.fillRect(0,0,matrixCanvas.width,matrixCanvas.height);
+      // draw letters
       for(let i=0;i<drops.length;i++){
-        const text = String.fromCharCode(0x30A0 + Math.random()*96);
-        matrixCtx.fillText(text, i*20, drops[i]*20);
-        if(drops[i]*20 > matrixCanvas.height && Math.random() > 0.975) drops[i]=0; drops[i]++;
+        const text = letters[Math.floor(Math.random()*letters.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        // glow & parpadeo
+        mctx.fillStyle = (Math.random()>0.85) ? '#aaffaa' : '#00ff88';
+        mctx.fillText(text, x, y);
+        // slight brighter head
+        if (Math.random() > 0.97) {
+          mctx.fillStyle = '#bfffd5';
+          mctx.fillText(text, x, y- (fontSize*0.25));
+        }
+        drops[i] = (y > matrixCanvas.height && Math.random() > 0.975) ? 0 : drops[i] + 1;
       }
       requestAnimationFrame(drawMatrix);
     }
     drawMatrix();
 
-    // PARTICLES
-    const particlesCanvas = document.getElementById('particlesCanvas');
-    const pctx = particlesCanvas.getContext('2d');
-    function resizeCanv(){particlesCanvas.width=matrixCanvas.width=innerWidth;particlesCanvas.height=matrixCanvas.height=innerHeight}
-    addEventListener('resize',resizeCanv); resizeCanv();
-    const parts=[]; for(let i=0;i<120;i++){parts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+0.6,vx:Math.random()*1-0.5,vy:Math.random()*1-0.5,a:Math.random()*0.6+0.1})}
-    function animateParts(){pctx.clearRect(0,0,particlesCanvas.width,particlesCanvas.height);for(const p of parts){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=particlesCanvas.width;if(p.x>particlesCanvas.width)p.x=0;if(p.y<0)p.y=particlesCanvas.height;if(p.y>particlesCanvas.height)p.y=0;pctx.beginPath();pctx.fillStyle='rgba(0,255,225,'+p.a+')';pctx.arc(p.x,p.y,p.r,0,Math.PI*2);pctx.fill()}requestAnimationFrame(animateParts)}
+    /* ---------------- Particles ---------------- */
+    const pCanvas = document.getElementById('particlesCanvas');
+    const pctx = pCanvas.getContext('2d');
+    let parts = [];
+    function resizeParts(){ pCanvas.width = innerWidth; pCanvas.height = innerHeight; parts = []; for(let i=0;i<120;i++){ parts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.8+0.6,vx:Math.random()*0.8-0.4,vy:Math.random()*0.6-0.3,a:Math.random()*0.6+0.1}) } }
+    resizeParts(); window.addEventListener('resize', resizeParts);
+    function animateParts(){ pctx.clearRect(0,0,pCanvas.width,pCanvas.height); for(const p of parts){ p.x += p.vx; p.y += p.vy; if(p.x<0)p.x=pCanvas.width; if(p.x>pCanvas.width)p.x=0; if(p.y<0)p.y=pCanvas.height; if(p.y>pCanvas.height)p.y=0; pctx.beginPath(); pctx.fillStyle = 'rgba(0,255,225,'+p.a+')'; pctx.arc(p.x,p.y,p.r,0,Math.PI*2); pctx.fill(); } requestAnimationFrame(animateParts); }
     animateParts();
 
-    // MODAL LOGIC
-    const modal=document.getElementById('modal');const openLoginBtn=document.getElementById('openLoginBtn');const closeModal=document.getElementById('closeModal');
-    openLoginBtn.addEventListener('click',()=>modal.classList.add('show'));
-    closeModal.addEventListener('click',()=>modal.classList.remove('show'));
-    document.getElementById('forgot').addEventListener('click',e=>{e.preventDefault();const em=prompt('Introduce tu correo para recuperar contraseña');if(em)alert('Se ha enviado enlace de recuperación a '+em+' (placeholder)')});
+    /* ------------- Login logic (calls backend endpoints) ------------- */
+    const screenLogin = document.getElementById('screenLogin');
+    const authForm = document.getElementById('authForm');
+    const nameField = document.getElementById('nameField');
+    const emailField = document.getElementById('emailField');
+    const passField = document.getElementById('passField');
+    const showRegisterBtn = document.getElementById('showRegisterBtn');
+    const forgotBtn = document.getElementById('forgotBtn');
+    const enterAsGuest = document.getElementById('enterAsGuest');
+    const skipLogin = document.getElementById('skipLogin');
+    const openLoginAgain = document.getElementById('openLoginAgain');
+    const mainContent = document.getElementById('mainContent');
+    const viewProjectsBtn = document.getElementById('viewProjectsBtn');
 
-    document.getElementById('authForm').addEventListener('submit',e=>{e.preventDefault();const em=document.getElementById('email').value;alert('Sesión iniciada: '+em+' (esto es un placeholder)');modal.classList.remove('show')});
-    document.getElementById('showRegister').addEventListener('click',()=>{const em=prompt('Correo para registrar:');if(em)alert('Cuenta registrada: '+em+' (placeholder)')});
-    function social(p){alert('Autenticación con '+p+' (placeholder). Puedo integrar OAuth real si quieres).')}
+    // show/hide register inputs
+    let registerMode = false;
+    showRegisterBtn.addEventListener('click', ()=> {
+      registerMode = !registerMode;
+      nameField.style.display = registerMode ? 'block' : 'none';
+      showRegisterBtn.textContent = registerMode ? 'Volver a login' : 'Registrarse';
+    });
 
-    // Smooth scroll for projects
-    document.getElementById('viewProjects').addEventListener('click',()=>{document.querySelector('.section').scrollIntoView({behavior:'smooth'})});
-  </script></body>
-</html>
+    // helper
+    async function apiPost(path, data){
+      try {
+        const base = ''; // same origin; si el backend está en otra URL pon la URL aquí
+        const res = await fetch(base + path, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+        return await res.json();
+      } catch(e){
+        console.error(e);
+        return { error: 'error_connection' };
+      }
+    }
+
+    authForm.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const email = emailField.value.trim();
+      const pass = passField.value;
+      const name = nameField.value.trim() || '';
+      if(registerMode){
+        // register
+        const r = await apiPost('/api/register', { email, password: pass, name });
+        if(r && r.ok){ alert('Registrado correctamente. Revisa el Gmail configurado.'); registerMode=false; nameField.style.display='none'; showRegisterBtn.textContent='Registrarse'; }
+        else alert('Error registro: ' + (r.error || 'No se pudo registrar'));
+      } else {
+        // login
+        const r = await apiPost('/api/login', { email, password: pass });
+        if(r && r.ok){
+          alert('Sesión iniciada: ' + r.user.email);
+          // hide lo
