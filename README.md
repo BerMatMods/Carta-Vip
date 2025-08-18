@@ -1,234 +1,105 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>⚡BerMat Injector Pro🔥</title>
-
-<!-- Fuentes y estilo futurista -->
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin: 0;
-    background: #050d0f;
-    color: #00ffcc;
-    font-family: 'Share Tech Mono', monospace;
-  }
-  header {
-    text-align: center;
-    padding: 25px;
-    background: linear-gradient(90deg,#00ffcc,#0099ff);
-    color: black;
-    text-shadow: 0 0 10px #00ffcc, 0 0 20px #0099ff;
-  }
-  h1 {
-    font-family: 'Russo One', sans-serif;
-    font-size: 32px;
-  }
-  .container {
-    padding: 15px;
-  }
-  .panel {
-    background: rgba(0,0,0,0.85);
-    border: 2px solid #00ffcc;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 20px #00ffcc;
-  }
-  .panel h2 {
-    margin-top: 0;
-    font-size: 22px;
-    color: #00e0ff;
-    text-shadow: 0 0 10px #00e0ff;
-  }
-  button {
-    background: #00ffcc;
-    color: black;
-    font-size: 16px;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    margin: 5px;
-    transition: 0.3s;
-  }
-  button:hover {
-    background: #0099ff;
-    color: white;
-    box-shadow: 0 0 15px #0099ff;
-  }
-  #logs {
-    font-family: monospace;
-    background: black;
-    padding: 15px;
-    height: 220px;
-    overflow-y: auto;
-    border-radius: 10px;
-    border: 1px solid #00ffcc;
-    color: #00ffcc;
-  }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
-    gap: 10px;
-  }
-  .tool {
-    background: rgba(0,255,204,0.1);
-    border: 1px solid #00ffcc;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  .tool:hover {
-    background: rgba(0,255,204,0.2);
-    transform: scale(1.05);
-  }
-  .monitor {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-  }
-  footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
-    color: gray;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTTP Injector Pro — BerMatMods</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-  <h1>⚡BerMat Injector Pro🔥</h1>
-  <p>By: Anth'Zz Berrocal | Alias: <b>BerMatModZ</b></p>
-</header>
+  <!-- Pantalla de bienvenida -->
+  <div class="splash" id="splash">
+    <h1 class="logo">⚡ HTTP Injector Pro ⚡</h1>
+    <p class="sub">By BerMatMods</p>
+  </div>  <!-- Barra superior -->  <header>
+    <h2>HTTP Injector — BerMatMods</h2>
+    <nav>
+      <button id="btnSettings">⚙️ Configuración</button>
+      <button id="btnHelp">❓ Ayuda</button>
+    </nav>
+  </header>  <!-- Contenido principal -->  <main>
+    <section class="connection">
+      <h3>Configuración de Conexión</h3>
+      <label>Payload:
+        <textarea id="payload" placeholder="Ejemplo: CONNECT [host_port] HTTP/1.1\nHost: [host]" rows="4"></textarea>
+      </label>
+      <label>Host / SNI:
+        <input type="text" id="host" placeholder="www.example.com" />
+      </label>
+      <label>Puerto:
+        <input type="number" id="port" placeholder="443" />
+      </label>
+      <label>Método:
+        <select id="method">
+          <option>SSL/TLS</option>
+          <option>HTTP Proxy</option>
+          <option>SSH</option>
+          <option>Directo</option>
+        </select>
+      </label>
+      <div class="buttons">
+        <button id="startBtn">🚀 Iniciar</button>
+        <button id="stopBtn">⛔ Detener</button>
+        <button id="importBtn">📂 Importar</button>
+        <button id="exportBtn">💾 Exportar</button>
+      </div>
+    </section><!-- Logs -->
+<section class="logs">
+  <h3>Registros de Conexión</h3>
+  <div id="logOutput" class="log-output"></div>
+</section>
 
-<div class="container">
+<!-- Monitor -->
+<section class="monitor">
+  <h3>Monitor de tráfico</h3>
+  <div id="trafficMonitor" class="monitor-box"></div>
+</section>
 
-  <!-- Panel de Conexión -->
-  <div class="panel">
-    <h2>🔌 Conexión VPN/SSH/HTTP</h2>
-    <button onclick="connect()">Conectar</button>
-    <button onclick="disconnect()">Desconectar</button>
-    <div class="monitor">
-      <p>🌐 Estado: <span id="status">Desconectado ❌</span></p>
-      <p>⚡ Ping: <span id="ping">---</span></p>
-      <p>📶 Velocidad: <span id="speed">---</span></p>
-    </div>
-  </div>
+  </main>  <!-- Footer -->  <footer>
+    <p>© 2025 ⚡BerMatMods — HTTP Injector Clone</p>
+  </footer>  <script src="app.js"></script></body>
+</html>/* ===================== style.css ===================== */ body { margin: 0; font-family: "Russo One", sans-serif; background: #0c0f14; color: #e0e0e0; }
 
-  <!-- Registros -->
-  <div class="panel">
-    <h2>📡 Registro de Conexión</h2>
-    <div id="logs">Esperando acción...</div>
-  </div>
+header { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #111; border-bottom: 2px solid #0ff; }
 
-  <!-- Configuración -->
-  <div class="panel">
-    <h2>⚙️ Configuración EHI</h2>
-    <input type="file" id="fileInput">
-    <button onclick="importConfig()">Importar</button>
-    <button onclick="exportConfig()">Exportar</button>
-    <p id="configStatus">Sin configuración cargada.</p>
-  </div>
+header h2 { color: #0ff; }
 
-  <!-- Herramientas -->
-  <div class="panel">
-    <h2>🛠️ Herramientas</h2>
-    <div class="tools-grid">
-      <div class="tool" onclick="fakeTool('Payload Generator')">Payload Generator</div>
-      <div class="tool" onclick="fakeTool('Host Checker')">Host Checker</div>
-      <div class="tool" onclick="fakeTool('IP Logger')">IP Logger</div>
-      <div class="tool" onclick="fakeTool('SSL Tunnel')">SSL Tunnel</div>
-      <div class="tool" onclick="fakeTool('DNS Spoofer')">DNS Spoofer</div>
-      <div class="tool" onclick="fakeTool('HTTP Header Modifier')">HTTP Header</div>
-    </div>
-  </div>
+nav button { margin-left: 5px; padding: 5px 10px; border: none; background: #0ff; color: #000; cursor: pointer; border-radius: 5px; }
 
-  <!-- Info personal -->
-  <div class="panel">
-    <h2>👨‍💻 Información del Proyecto</h2>
-    <p>🔹 Creador: <b>Anth'Zz Berrocal</b></p>
-    <p>🔹 Proyecto: ⚡BerMat Injector🔥</p>
-    <p>🔹 Alias: <b>BerMatModZ</b></p>
-    <p>🔹 Ubicación: Andahuaylas, Perú 🇵🇪</p>
-    <p>🔹 Especialidad: Bots WhatsApp, Hacking Ético, Seguridad Web, Apps Pro</p>
-    <p>🔹 Otros proyectos: ⚡BerMat-Bot MD🔥, BerMat_Mods</p>
-  </div>
+main { padding: 20px; }
 
-</div>
+section { margin-bottom: 25px; background: #1a1f26; padding: 15px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 255, 255, 0.3); }
 
-<footer>
-  ⚡ Proyecto 100% Free & Open Source | GitHub: <b>BerMatModZ</b>
-</footer>
+label { display: block; margin: 10px 0; }
 
-<script>
-  let logs = document.getElementById("logs");
-  let connected = false;
-  let statusEl = document.getElementById("status");
-  let pingEl = document.getElementById("ping");
-  let speedEl = document.getElementById("speed");
+input, textarea, select { width: 100%; padding: 8px; background: #111; color: #0ff; border: 1px solid #0ff; border-radius: 5px; }
 
-  function connect(){
-    if(connected){
-      logs.innerHTML += "<br>[INFO] Ya estás conectado ✅";
-      return;
-    }
-    logs.innerHTML += "<br>[INFO] Iniciando conexión...";
-    statusEl.innerText = "Conectando...";
-    setTimeout(()=>{ logs.innerHTML += "<br>[OK] Autenticando SSH..."; },1000);
-    setTimeout(()=>{ logs.innerHTML += "<br>[OK] HTTP Header Injectado."; },2000);
-    setTimeout(()=>{ logs.innerHTML += "<br>[OK] Conexión establecida a <b>BerMat Server</b> 🌐"; 
-                     connected=true; statusEl.innerText="Conectado ✅"; },3000);
-    setTimeout(()=>{ 
-      pingEl.innerText="65ms"; 
-      speedEl.innerText="7.5 Mbps"; 
-      logs.innerHTML += "<br>[LOG] Conexión estable, tráfico en curso..."; 
-    },4000);
-  }
+.buttons button { margin: 5px; padding: 10px; background: #0ff; border: none; border-radius: 5px; cursor: pointer; }
 
-  function disconnect(){
-    if(!connected){
-      logs.innerHTML += "<br>[INFO] No hay conexión activa.";
-      return;
-    }
-    logs.innerHTML += "<br>[WARN] Cerrando conexión...";
-    statusEl.innerText="Desconectando...";
-    setTimeout(()=>{ 
-      logs.innerHTML += "<br>[OK] Desconectado ❌"; 
-      connected=false; 
-      statusEl.innerText="Desconectado ❌"; 
-      pingEl.innerText="---"; 
-      speedEl.innerText="---"; 
-    },2000);
-  }
+.log-output { height: 200px; overflow-y: auto; background: #000; padding: 10px; border: 1px solid #0ff; font-family: monospace; font-size: 14px; color: #0f0; }
 
-  function importConfig(){
-    let file = document.getElementById("fileInput").files[0];
-    if(file){
-      document.getElementById("configStatus").innerText = "Configuración importada: "+file.name;
-      logs.innerHTML += "<br>[CONFIG] Archivo cargado con éxito.";
-    } else {
-      logs.innerHTML += "<br>[ERROR] No se seleccionó ningún archivo.";
-    }
-  }
+.monitor-box { height: 150px; background: #000; color: #0f0; border: 1px solid #0ff; overflow-y: auto; padding: 10px; font-family: monospace; }
 
-  function exportConfig(){
-    let blob = new Blob(["CONFIG=BerMatModZ Pro Injector"], {type: "text/plain"});
-    let url = URL.createObjectURL(blob);
-    let a = document.createElement("a");
-    a.href = url;
-    a.download = "bermat-config.ehi";
-    a.click();
-    logs.innerHTML += "<br>[CONFIG] Archivo exportado correctamente.";
-  }
+.splash { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
 
-  function fakeTool(name){
-    logs.innerHTML += `<br>[TOOL] Ejecutando ${name}...`;
-    setTimeout(()=>{ logs.innerHTML += `<br>[OK] ${name} finalizado correctamente.`; },2000);
-  }
-</script>
-</body>
-</html>
+.splash .logo { font-size: 32px; color: #0ff; animation: pulse 2s infinite; }
+
+.splash .sub { color: #aaa; margin-top: 10px; }
+
+@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
+
+/* ===================== app.js ===================== */ window.addEventListener("load", () => { const splash = document.getElementById("splash"); setTimeout(() => splash.style.display = "none", 2500); });
+
+const logOutput = document.getElementById("logOutput"); const trafficMonitor = document.getElementById("trafficMonitor");
+
+function addLog(message) { const time = new Date().toLocaleTimeString(); logOutput.innerHTML += [${time}] ${message}<br/>; logOutput.scrollTop = logOutput.scrollHeight; }
+
+function addTraffic(data) { trafficMonitor.innerHTML += ${data}<br/>; trafficMonitor.scrollTop = trafficMonitor.scrollHeight; }
+
+document.getElementById("startBtn").addEventListener("click", () => { addLog("Iniciando conexión..."); setTimeout(() => addLog("Conexión establecida con éxito ✅"), 2000); setInterval(() => addTraffic("[DATA] Packet -> 192.168.1." + Math.floor(Math.random()*255)), 1000); });
+
+document.getElementById("stopBtn").addEventListener("click", () => { addLog("Conexión detenida ❌"); });
+
+document.getElementById("importBtn").addEventListener("click", () => { addLog("Archivo de configuración importado"); });
+
+document.getElementById("exportBtn").addEventListener("click", () => { addLog("Configuración exportada"); });
+
