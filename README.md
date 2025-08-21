@@ -4,14 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>La Magia del Barbero | Andahuaylas, Apurímac</title>
-  <meta name="description" content="Barbería premium en Andahuaylas. Cortes, barbas, tratamientos faciales y capilares. El quinto corte gratis.">
+  <meta name="description" content="Barbería premium en Andahuaylas. Cortes, barbas, tratamientos faciales y capilares. El quinto corte es gratis.">
   <meta name="author" content="AnthZz Berrocal">
+
+  <!-- Meta para móviles -->
+  <meta name="theme-color" content="#d4af37">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
 
   <!-- AOS Animations -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -28,10 +33,7 @@
       --shadow: 0 8px 30px rgba(0,0,0,0.18);
       --shadow-light: 0 4px 15px rgba(0,0,0,0.1);
       --glow: 0 0 20px rgba(212, 175, 55, 0.5);
-      --glow-rgb: 0 0 15px rgba(255, 100, 50, 0.3),
-                   0 0 25px rgba(0, 200, 255, 0.2),
-                   0 0 35px rgba(150, 0, 255, 0.2);
-      --radius: 14px;
+      --radius: 16px;
       --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -146,7 +148,7 @@
       box-shadow: var(--shadow), var(--glow);
     }
 
-    /* Header con fondo de barbería y luces RGB suaves */
+    /* Header con fondo de barbería */
     header {
       height: 100vh;
       background: 
@@ -197,7 +199,7 @@
       margin: 1.6rem auto 2.8rem;
     }
 
-    /* Navbar */
+    /* Navbar Responsive */
     nav {
       background: rgba(0,0,0,0.95);
       backdrop-filter: blur(10px);
@@ -208,6 +210,25 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       border-bottom: 1px solid var(--primary);
       padding: 1rem 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+      background: var(--primary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1001;
+      box-shadow: var(--shadow);
     }
 
     nav ul {
@@ -237,7 +258,55 @@
       border-color: white;
     }
 
-    /* Sección con fondo oscuro */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 80%;
+        height: 100vh;
+        padding: 80px 20px 30px;
+        gap: 1.5rem;
+        border-left: 2px solid var(--primary);
+        z-index: 1000;
+        animation: slideIn 0.4s ease;
+        backdrop-filter: blur(10px);
+        overflow-y: auto;
+      }
+
+      nav ul li a {
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+      }
+
+      @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+    }
+
+    #navMenu.active {
+      display: flex !important;
+    }
+
+    .menu-toggle .fa-bars,
+    .menu-toggle.active .fa-times {
+      display: flex;
+    }
+
+    .menu-toggle .fa-times,
+    .menu-toggle.active .fa-bars {
+      display: none;
+    }
+
+    /* Sección oscura */
     section.dark {
       background: var(--dark);
       color: white;
@@ -256,10 +325,10 @@
       color: #ccc;
     }
 
-    /* Servicios */
+    /* Servicios - más grande y con nombres de corte */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2.8rem;
     }
 
@@ -269,32 +338,81 @@
       overflow: hidden;
       box-shadow: var(--shadow-light);
       transition: var(--transition);
-      transform-style: preserve-3d;
-      perspective: 1000px;
     }
 
     .service-card:hover {
-      transform: translateY(-15px) rotateX(10deg);
+      transform: translateY(-12px);
       box-shadow: var(--shadow);
     }
 
     .service-card img {
-      height: 240px;
+      height: 220px;
       object-fit: cover;
-      transition: transform 0.7s ease;
+      transition: transform 0.6s ease;
     }
 
     .service-card:hover img {
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
 
     .service-content {
-      padding: 2rem;
+      padding: 1.8rem;
     }
 
     .service-content h3 {
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       color: var(--primary-dark);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .service-content .cut-name {
+      font-size: 1.1rem;
+      color: #888;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Promoción elegante sin sellos */
+    .promo {
+      background: linear-gradient(135deg, #1a1a1a, #000);
+      color: white;
+      text-align: center;
+      padding: 4rem 2.5rem;
+      border-radius: var(--radius);
+      max-width: 1000px;
+      margin: 3rem auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), var(--glow);
+      position: relative;
+      overflow: hidden;
+      border: 2px solid var(--primary);
+    }
+
+    .promo::before {
+      content: '✨';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 3rem;
+      animation: sparkle 2s infinite alternate;
+      text-shadow: 0 0 20px rgba(212,175,55,0.8);
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0.6; transform: rotate(0deg); }
+      100% { opacity: 1; transform: rotate(10deg); }
+    }
+
+    .promo h3 {
+      color: var(--primary);
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .promo p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 1.8rem;
     }
 
     /* Galería */
@@ -308,126 +426,24 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-light);
-      position: relative;
       transition: transform 0.4s ease;
     }
 
     .gallery-item:hover {
-      transform: scale(1.08) rotate(3deg);
+      transform: scale(1.08);
       box-shadow: var(--glow);
     }
 
     .gallery-item img {
       height: 200px;
       object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.2);
-    }
-
-    /* Promociones */
-    .promo {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 4rem 2.5rem;
-      border-radius: var(--radius);
-      max-width: 950px;
-      margin: 3rem auto;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3), var(--glow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .promo h3 {
-      color: var(--primary);
-      font-size: 2.6rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .loyalty-card {
-      background: url('https://images.unsplash.com/photo-1605211850589-e3b51e8a8e3c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
-      background-blend-mode: overlay;
-      background-color: rgba(0,0,0,0.9);
-      border: 4px solid var(--primary);
-      border-radius: var(--radius);
-      padding: 3rem;
-      max-width: 650px;
-      margin: 3rem auto;
-      color: white;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5), var(--glow);
-      position: relative;
-    }
-
-    .loyalty-card::before {
-      content: '✨';
-      position: absolute;
-      top: 15px;
-      right: 25px;
-      font-size: 2.2rem;
-      animation: spin 4s linear infinite;
-      text-shadow: 0 0 10px rgba(212,175,55,0.8);
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .loyalty-card h3 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .stamps {
-      display: flex;
-      justify-content: center;
-      gap: 1.6rem;
-      margin: 2.8rem 0;
-      flex-wrap: wrap;
-    }
-
-    .stamp {
-      width: 80px;
-      height: 80px;
-      background: rgba(255,255,255,0.1);
-      border: 3px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: rgba(255,255,255,0.6);
-      font-weight: bold;
-      transition: var(--transition);
-      cursor: pointer;
-      backdrop-filter: blur(5px);
-    }
-
-    .stamp.active {
-      background: var(--primary);
-      color: white;
-      border-color: white;
-      transform: scale(1.3) rotate(12deg);
-      box-shadow: var(--glow);
-      animation: bounce 0.7s ease;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-12px); }
-      60% { transform: translateY(-6px); }
     }
 
     /* Testimonios */
     .testimonials {
       display: flex;
       flex-wrap: wrap;
-      gap: 2.2rem;
+      gap: 2rem;
       justify-content: center;
     }
 
@@ -479,6 +495,7 @@
       height: 120px;
       object-fit: cover;
       border: 4px solid var(--primary);
+      border-radius: 50%;
     }
 
     .team-member h4 {
@@ -491,7 +508,7 @@
       color: var(--gray);
     }
 
-    /* Blog ligero */
+    /* Blog */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -519,16 +536,11 @@
       color: var(--primary-dark);
     }
 
-    .blog-content p {
-      color: var(--gray);
-    }
-
     /* Formulario */
     .booking-container {
       display: flex;
       flex-wrap: wrap;
       gap: 3.5rem;
-      align-items: stretch;
     }
 
     .booking-info, .booking-form {
@@ -542,10 +554,6 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       border-top: 5px solid var(--primary);
-    }
-
-    .form-group {
-      margin-bottom: 1.8rem;
     }
 
     .form-group label {
@@ -573,7 +581,6 @@
       box-shadow: 0 0 0 4px rgba(212,175,55,0.2);
     }
 
-    /* WhatsApp Buttons */
     .whatsapp-btn {
       display: inline-flex;
       align-items: center;
@@ -644,21 +651,15 @@
       text-shadow: var(--glow);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       h1 { font-size: 3.8rem; }
       h2 { font-size: 2.4rem; }
       .container { padding: 3.5rem 0; }
-      nav ul { flex-direction: column; }
-      .loyalty-card { padding: 2.2rem; }
-      .stamp { width: 70px; height: 70px; font-size: 1.6rem; }
       header { height: auto; padding: 180px 20px 140px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Cursor Glow (opcional, desactivado por simplicidad) -->
 
   <!-- Header -->
   <header id="inicio">
@@ -670,8 +671,12 @@
   </header>
 
   <!-- Navbar -->
-  <nav>
-    <ul>
+  <nav id="navbar">
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+      <i class="fas fa-times"></i>
+    </div>
+    <ul id="navMenu">
       <li><a href="#inicio" class="active">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#galeria">Galería</a></li>
@@ -686,50 +691,72 @@
 
   <!-- Servicios -->
   <section id="servicios" class="container">
-    <h2>Arte en Cada Corte</h2>
-    <p>En <strong>La Magia del Barbero</strong>, no solo cortamos cabello, creamos identidad. Cada servicio es una experiencia única de lujo y precisión.</p>
+    <h2>Nuestros Cortes & Tratamientos</h2>
+    <p>En <strong>La Magia del Barbero</strong>, cada estilo tiene nombre, historia y precisión. Descubre tu look ideal.</p>
     
     <div class="services-grid">
-      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1580480855173-483943e088d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Corte de cabello">
+      <div class="service-card" data-aos="fade-up">
+        <img src="https://images.unsplash.com/photo-1580480855173-483943e088d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Fade Clásico">
         <div class="service-content">
+          <span class="cut-name">Corte: Fade Clásico</span>
           <h3>Corte de Cabello Premium</h3>
           <p>Diseñamos tu look ideal con tijera, navaja y pasión por el oficio tradicional. Desde fades hasta estilos clásicos.</p>
         </div>
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Diseño de barba">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Barba Profesional">
         <div class="service-content">
+          <span class="cut-name">Estilo: Barba Geométrica</span>
           <h3>Diseño de Barba de Élite</h3>
           <p>Perfilado profesional, simetría perfecta y productos de alta gama para una barba digna de un rey.</p>
         </div>
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-        <img src="https://images.unsplash.com/photo-1599119732520-3ab707e86b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Tratamiento facial">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1599119732520-3ab707e86b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Limpieza Facial">
         <div class="service-content">
+          <span class="cut-name">Tratamiento: Spa Facial</span>
           <h3>Tratamiento Facial Completo</h3>
           <p>Limpieza profunda, exfoliación, vapor y mascarilla. Renueva tu piel como un verdadero caballero.</p>
         </div>
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-        <img src="https://images.unsplash.com/photo-1622295056923-9dd5c8663240?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Tratamiento capilar">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1622295056923-9dd5c8663240?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Tratamiento Capilar">
         <div class="service-content">
+          <span class="cut-name">Reparación: Cabello Seco</span>
           <h3>Tratamiento Capilar Reparador</h3>
           <p>Hidratación, fortalecimiento y nutrición profunda. Ideal para cabellos dañados, secos o con caspa.</p>
         </div>
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-        <img src="https://images.unsplash.com/photo-1584433144071-2b581c647b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Afeitado clásico">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://images.unsplash.com/photo-1584433144071-2b581c647b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Afeitado con Navaja">
         <div class="service-content">
+          <span class="cut-name">Técnica: Afeitado en Caliente</span>
           <h3>Afeitado Clásico con Navaja</h3>
           <p>La experiencia tradicional: espuma caliente, navaja afilada y toallas tibias. Suavidad extrema en cada pasada.</p>
         </div>
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-        <img src="https://images.unsplash.com/photo-1607990281513-2c110f14a4bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Peinado para eventos">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+        <img src="https://images.unsplash.com/photo-1607990281513-2c110f14a4bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Peinado de Boda">
         <div class="service-content">
+          <span class="cut-name">Evento: Estilo Elegante</span>
           <h3>Peinado para Eventos y Bodas</h3>
           <p>Para bodas, fiestas o fotos. Luce impecable en los momentos importantes con un estilo duradero y elegante.</p>
+        </div>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+        <img src="https://images.unsplash.com/photo-1568849756951-591e95df6950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Undercut">
+        <div class="service-content">
+          <span class="cut-name">Corte: Undercut Moderno</span>
+          <h3>Estilo Undercut Texturizado</h3>
+          <p>Definición nítida en los laterales y volumen en la parte superior. Ideal para hombres modernos y seguros.</p>
+        </div>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+        <img src="https://images.unsplash.com/photo-1522735338363-cc7313be0ae0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Pompadour">
+        <div class="service-content">
+          <span class="cut-name">Clásico: Pompadour Retro</span>
+          <h3>Pompadour con Fade</h3>
+          <p>Volumen en la parte superior y fade en los laterales. Un estilo atemporal con toque moderno.</p>
         </div>
       </div>
     </div>
@@ -740,39 +767,25 @@
     <h2>Galería de Estilo</h2>
     <p>Descubre algunos de nuestros trabajos más recientes. Cada corte es una transformación.</p>
     <div class="gallery-grid">
-      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1580480855173-483943e088d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Corte fade"></div>
-      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Barba perfilada"></div>
-      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1599119732520-3ab707e86b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Tratamiento facial"></div>
-      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400"><img src="https://images.unsplash.com/photo-1584433144071-2b581c647b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Afeitado clásico"></div>
-      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500"><img src="https://images.unsplash.com/photo-1607990281513-2c110f14a4bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Peinado evento"></div>
-      <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600"><img src="https://images.unsplash.com/photo-1599351431202-1e9f17a1705b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Ambiente barbería"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580480855173-483943e088d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Fade"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Barba"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599119732520-3ab707e86b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Facial"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1584433144071-2b581c647b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Afeitado"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1607990281513-2c110f14a4bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Evento"></div>
+      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1568849756951-591e95df6950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Undercut"></div>
     </div>
   </section>
 
-  <!-- Fidelización -->
+  <!-- Promociones - Más bonita y clara -->
   <section id="promociones" class="container">
-    <h2>Programa de Fidelización: La Tarjeta Mágica</h2>
-    <p>Cada visita te acerca más a una recompensa legendaria.</p>
+    <h2>Programa de Fidelización</h2>
+    <p>Porque tu lealtad merece recompensa…</p>
 
     <div class="promo">
       <h3>✨ El Quinto Corte es un Hechizo Gratis ✨</h3>
-      <p>Por cada servicio, sellamos tu tarjeta. Al completar 4 sellos, el <strong>quinto corte es GRATIS</strong>.</p>
-      <p>Presenta tu tarjeta física después de cada corte para que te sellen tu visita.</p>
-    </div>
-
-    <div class="loyalty-card">
-      <h3>Tu Tarjeta de Fidelización</h3>
-      <p>Guarda esta tarjeta y preséntala cada vez que vengas. ¡Tu lealtad tiene premio!</p>
-
-      <div class="stamps" id="stampContainer">
-        <div class="stamp" data-id="1">1</div>
-        <div class="stamp" data-id="2">2</div>
-        <div class="stamp" data-id="3">3</div>
-        <div class="stamp" data-id="4">4</div>
-        <div class="stamp" data-id="5">5</div>
-      </div>
-
-      <button class="btn" id="claimButton">Sellar mi Corte →</button>
+      <p>Cada vez que vengas, sellamos tu visita mágica. Al completar <strong>4 servicios</strong>, el <strong>quinto corte es completamente gratis</strong>.</p>
+      <p>Presenta tu tarjeta física en cada visita y acumula tu magia.</p>
+      <p><strong>¡Tu estilo crece, tu recompensa también!</strong></p>
     </div>
   </section>
 
@@ -789,24 +802,24 @@
     <p>Profesionales con años de experiencia, pasión por el oficio y manos de oro.</p>
     <div class="team-grid">
       <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1560250097-0b9352761d85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Barbero">
+        <img src="https://images.unsplash.com/photo-1560250097-0b9352761d85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Carlos Mendoza">
         <h4>Carlos Mendoza</h4>
         <p>Barbero Senior con 12 años de experiencia. Especialista en cortes clásicos.</p>
       </div>
       <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1573496359143-7495f9b0b8b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Estilista">
+        <img src="https://images.unsplash.com/photo-1573496359143-7495f9b0b8b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luis Fernández">
         <h4>Luis Fernández</h4>
         <p>Diseñador de barbas y tratamientos faciales. Innovador y detallista.</p>
       </div>
       <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Estilista">
+        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jorge Linares">
         <h4>Jorge Linares</h4>
         <p>Experto en tratamientos capilares y peinados para eventos.</p>
       </div>
     </div>
   </section>
 
-  <!-- Blog ligero -->
+  <!-- Blog -->
   <section id="blog" class="container">
     <h2>Consejos de Estilo</h2>
     <p>Pequeños tips para mantener tu look impecable entre visitas.</p>
@@ -819,14 +832,14 @@
         </div>
       </div>
       <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corte cabello">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tendencias">
         <div class="blog-content">
           <h3>Los cortes del momento en 2025</h3>
           <p>Desde el fade texturizado hasta el pompadour moderno, te mostramos las tendencias.</p>
         </div>
       </div>
       <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cliente satisfecho">
+        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reserva">
         <div class="blog-content">
           <h3>Por qué reservar es clave</h3>
           <p>Evita esperas, asegura tu horario y disfruta de un servicio personalizado.</p>
@@ -950,7 +963,23 @@
   <script>
     AOS.init({ duration: 900, easing: 'ease-in-out', once: true });
 
-    // Testimonios aleatorios
+    // Menú hamburguesa
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
+
+    // Testimonios
     const testimonials = [
       "¡Quedé como nuevo! El corte fue impecable y la atención, de otro nivel.",
       "La barba quedó perfecta. Desde que vine, no voy a otro lado.",
@@ -972,25 +1001,10 @@
         <strong>— ${names[i]}</strong>
       `;
       container.appendChild(el);
-      AOS.refresh();
     });
+    AOS.refresh();
 
-    // Sellado de tarjeta
-    const stamps = document.querySelectorAll('.stamp');
-    const claimButton = document.getElementById('claimButton');
-    let filled = 0;
-
-    claimButton.addEventListener('click', () => {
-      if (filled < 4) {
-        stamps[filled].classList.add('active');
-        filled++;
-        alert(`¡Sello #${filled} aplicado! Te faltan ${4-filled} para tu corte mágico.`);
-      } else {
-        alert("🎉 ¡Felicidades! Tu quinto corte es GRATIS. Presenta esta tarjeta.");
-      }
-    });
-
-    // Formulario → WhatsApp
+    // Formulario → WhatsApp (sin mostrar el número del cliente)
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -1005,13 +1019,12 @@
 🌟 *RESERVA EN "LA MAGIA DEL BARBERO"* 🌟
 
 📌 *Nombre:* ${name}
-📱 *Teléfono:* ${phone}
 💈 *Servicio:* ${service}
 📅 *Fecha:* ${date}
 ⏰ *Hora:* ${time}
 📝 *Notas:* ${notes}
 
-🔥 ¡Tu cita está en proceso! Pronto te confirmaremos. ¡Gracias por elegirnos! 💈
+🔥💈
       `.trim();
 
       const encoded = encodeURIComponent(message);
