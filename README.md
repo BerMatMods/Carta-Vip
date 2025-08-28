@@ -1,1038 +1,662 @@
 
-<html lang="es">
+<html lang="es" id="html-root">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>La Magia del Barbero | Andahuaylas, Apurímac</title>
-  <meta name="description" content="Barbería premium en Andahuaylas. Cortes, barbas, tratamientos faciales y capilares. El quinto corte es gratis.">
-  <meta name="author" content="AnthZz Berrocal">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Spammer Pro - by AnthZz</title>
 
-  <!-- Meta para móviles -->
-  <meta name="theme-color" content="#d4af37">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- PWA Manifest -->
+  <link rel="manifest" href='application/json,{"name": "WhatsApp Spammer Pro", "short_name": "Spammer", "start_url": ".", "display": "standalone", "background_color": "#000", "theme_color": "#00ffff"}'>
+  <meta name="theme-color" content="#000">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
-
-  <!-- AOS Animations -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --primary: #d4af37;
-      --primary-dark: #b89a2e;
-      --secondary: #000;
-      --light: #f8f5f1;
-      --cream: #fdfbf7;
-      --gray: #555;
-      --dark: #111;
-      --shadow: 0 8px 30px rgba(0,0,0,0.18);
-      --shadow-light: 0 4px 15px rgba(0,0,0,0.1);
-      --glow: 0 0 20px rgba(212, 175, 55, 0.5);
-      --radius: 16px;
-      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
+    /* === Estilos Globales === */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Roboto', 'Segoe UI', sans-serif;
+    }
+
+    :root {
+      --text: #fff;
+      --bg: #000;
+      --card-bg: rgba(10, 10, 20, 0.85);
+      --input-bg: rgba(255, 255, 255, 0.1);
+      --border: rgba(0, 255, 255, 0.4);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      --btn-bg: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00);
+      --btn-bg-anim: linear-gradient(-45deg, #ff00ff, #00ffff, #ffff00, #ff8800);
+      --accent: #00ffff;
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--cream);
-      color: var(--gray);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
-      color: var(--secondary);
-    }
-
-    h1 {
-      font-size: 5.2rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      color: white;
-      text-shadow: 4px 4px 12px rgba(0,0,0,0.8);
-    }
-
-    h2 {
-      font-size: 3rem;
-      margin-bottom: 2.5rem;
-      text-align: center;
-      position: relative;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 140px;
-      height: 5px;
-      background: var(--primary);
-      border-radius: 3px;
-      box-shadow: var(--glow);
-    }
-
-    p {
-      margin-bottom: 1.1rem;
-      color: var(--gray);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: var(--transition);
-    }
-
-    img {
-      max-width: 100%;
-      border-radius: var(--radius);
-      display: block;
-      box-shadow: var(--shadow-light);
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 5rem 0;
-    }
-
-    /* Botón premium */
-    .btn {
-      display: inline-block;
-      background: linear-gradient(45deg, var(--primary), var(--primary-dark));
-      color: white;
-      padding: 16px 36px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      position: relative;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
       overflow: hidden;
-      z-index: 1;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: 0.8s;
-      z-index: -1;
-    }
-
-    .btn:hover::before {
-      left: 100%;
-    }
-
-    .btn:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow), var(--glow);
-    }
-
-    /* Header con fondo de barbería */
-    header {
-      height: 100vh;
-      background: 
-        linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
-        url('https://images.unsplash.com/photo-1599351431202-1e9f17a1705b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=90') no-repeat center center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
       position: relative;
-      overflow: hidden;
+      transition: background 0.5s ease;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
+    /* === Fondo con Partículas Animadas === */
+    .particles {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 100, 50, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(0, 200, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 90%, rgba(150, 0, 255, 0.1) 0%, transparent 50%);
+      z-index: -2;
       pointer-events: none;
-      z-index: 1;
-      animation: pulseRGB 8s infinite alternate;
     }
 
-    @keyframes pulseRGB {
-      0% { opacity: 0.4; }
-      100% { opacity: 0.7; filter: hue-rotate(10deg); }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+      filter: blur(1px);
+      animation: float 15s infinite linear;
     }
 
-    header .content {
-      z-index: 2;
-      max-width: 900px;
-      padding: 0 20px;
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.5; }
+      100% { transform: translateY(-1000px) translateX(100px) rotate(720deg); opacity: 0; }
     }
 
-    header p {
-      font-size: 1.5rem;
+    /* === Texto RGB Animado === */
+    .rgb-text {
+      background: linear-gradient(90deg, #f00, #0f0, #00f, #ff0, #f0f, #0ff);
+      background-size: 600% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 8s linear infinite;
+      font-weight: bold;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* === Botón con brillo RGB === */
+    .btn-neon {
+      background: var(--btn-bg-anim);
+      background-size: 300% 100%;
+      animation: bgShift 6s linear infinite;
       color: white;
-      opacity: 0.95;
-      max-width: 800px;
-      margin: 1.6rem auto 2.8rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
     }
 
-    /* Navbar Responsive */
-    nav {
-      background: rgba(0,0,0,0.95);
-      backdrop-filter: blur(10px);
+    @keyframes bgShift {
+      0% { background-position: 0%; }
+      100% { background-position: 300%; }
+    }
+
+    .btn-neon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 255, 0, 0.6);
+    }
+
+    /* === Notificación Flotante === */
+    #notification {
       position: fixed;
-      top: 0;
-      width: 100%;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      color: #00ffff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-      border-bottom: 1px solid var(--primary);
-      padding: 1rem 0;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.4s ease;
+      font-weight: bold;
+      max-width: 80vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    #notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* === Contenedor Principal === */
+    .container {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 25px;
+      margin: 20px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === Header === */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
     }
 
     .menu-toggle {
-      display: none;
-      font-size: 1.5rem;
-      color: white;
+      font-size: 1.5em;
       cursor: pointer;
-      background: var(--primary);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      color: var(--accent);
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(0, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 1001;
-      box-shadow: var(--shadow);
     }
 
-    nav ul {
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6em;
+    }
+
+    /* === Menú Lateral === */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      border-right: 1px solid var(--accent);
+      padding: 60px 20px 20px;
+      box-shadow: 5px 0 20px rgba(0, 255, 255, 0.2);
+      z-index: 900;
+      transition: left 0.4s ease;
+      overflow-y: auto;
+      backdrop-filter: blur(10px);
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .menu-header {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    .menu-header h3 {
+      color: var(--accent);
+      font-size: 1.3em;
+    }
+
+    .close-btn {
+      font-size: 1.5em;
+      cursor: pointer;
+      color: #aaa;
+    }
+
+    .sidebar ul {
       list-style: none;
-      gap: 1.4rem;
     }
 
-    nav ul li a {
-      color: white;
-      padding: 0.9rem 1.8rem;
-      border-radius: 35px;
-      font-weight: 500;
-      font-size: 1.05rem;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid transparent;
+    .sidebar ul li {
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      font-weight: bold;
+      background: rgba(0, 255, 255, 0.1);
     }
 
-    nav ul li a:hover,
-    nav ul li a.active {
-      background: var(--primary);
-      color: var(--secondary);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: white;
+    .sidebar ul li:hover {
+      background: var(--accent);
+      color: black;
+      transform: scale(1.03);
     }
 
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.95);
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 80%;
-        height: 100vh;
-        padding: 80px 20px 30px;
-        gap: 1.5rem;
-        border-left: 2px solid var(--primary);
-        z-index: 1000;
-        animation: slideIn 0.4s ease;
-        backdrop-filter: blur(10px);
-        overflow-y: auto;
-      }
-
-      nav ul li a {
-        padding: 1rem 1.5rem;
-        border-radius: 10px;
-      }
-
-      @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-    }
-
-    #navMenu.active {
-      display: flex !important;
-    }
-
-    .menu-toggle .fa-bars,
-    .menu-toggle.active .fa-times {
-      display: flex;
-    }
-
-    .menu-toggle .fa-times,
-    .menu-toggle.active .fa-bars {
+    /* === Tabs === */
+    .tab {
       display: none;
     }
 
-    /* Sección oscura */
-    section.dark {
-      background: var(--dark);
-      color: white;
-      padding: 6rem 0;
-    }
-
-    section.dark h2 {
-      color: white;
-    }
-
-    section.dark h2::after {
-      background: var(--primary);
-    }
-
-    section.dark p {
-      color: #ccc;
-    }
-
-    /* Servicios - más grande y con nombres de corte */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.8rem;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-light);
-      transition: var(--transition);
-    }
-
-    .service-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow);
-    }
-
-    .service-card img {
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .service-card:hover img {
-      transform: scale(1.1);
-    }
-
-    .service-content {
-      padding: 1.8rem;
-    }
-
-    .service-content h3 {
-      font-size: 1.8rem;
-      color: var(--primary-dark);
-      font-family: 'Playfair Display', serif;
-    }
-
-    .service-content .cut-name {
-      font-size: 1.1rem;
-      color: #888;
-      font-weight: 500;
-      margin-bottom: 0.6rem;
-    }
-
-    /* Promoción elegante sin sellos */
-    .promo {
-      background: linear-gradient(135deg, #1a1a1a, #000);
-      color: white;
-      text-align: center;
-      padding: 4rem 2.5rem;
-      border-radius: var(--radius);
-      max-width: 1000px;
-      margin: 3rem auto;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4), var(--glow);
-      position: relative;
-      overflow: hidden;
-      border: 2px solid var(--primary);
-    }
-
-    .promo::before {
-      content: '✨';
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 3rem;
-      animation: sparkle 2s infinite alternate;
-      text-shadow: 0 0 20px rgba(212,175,55,0.8);
-    }
-
-    @keyframes sparkle {
-      0% { opacity: 0.6; transform: rotate(0deg); }
-      100% { opacity: 1; transform: rotate(10deg); }
-    }
-
-    .promo h3 {
-      color: var(--primary);
-      font-size: 2.8rem;
-      margin-bottom: 1.5rem;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .promo p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 1.8rem;
-    }
-
-    /* Galería */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .gallery-item {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-light);
-      transition: transform 0.4s ease;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.08);
-      box-shadow: var(--glow);
-    }
-
-    .gallery-item img {
-      height: 200px;
-      object-fit: cover;
-    }
-
-    /* Testimonios */
-    .testimonials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    .testimonial {
-      background: white;
-      padding: 2rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-light);
-      max-width: 340px;
-      text-align: center;
-      color: var(--gray);
-    }
-
-    .testimonial i {
-      color: var(--primary);
-      font-size: 1.6rem;
-    }
-
-    .testimonial p {
-      font-style: italic;
-      color: #555;
-    }
-
-    .testimonial strong {
-      color: var(--secondary);
+    .tab.active {
       display: block;
-      margin-top: 0.8rem;
-      font-weight: 600;
     }
 
-    /* Equipo */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2.5rem;
-      margin-top: 2rem;
+    /* === Formulario === */
+    .input-group {
+      margin-bottom: 20px;
     }
 
-    .team-member {
-      text-align: center;
-      background: white;
-      padding: 2rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-light);
-    }
-
-    .team-member img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border: 4px solid var(--primary);
-      border-radius: 50%;
-    }
-
-    .team-member h4 {
-      margin: 1rem 0 0.5rem;
-      color: var(--primary-dark);
-    }
-
-    .team-member p {
-      font-size: 0.95rem;
-      color: var(--gray);
-    }
-
-    /* Blog */
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .blog-card {
-      background: white;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-light);
-    }
-
-    .blog-card img {
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .blog-content {
-      padding: 1.8rem;
-    }
-
-    .blog-content h3 {
-      font-size: 1.5rem;
-      color: var(--primary-dark);
-    }
-
-    /* Formulario */
-    .booking-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3.5rem;
-    }
-
-    .booking-info, .booking-form {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .booking-form {
-      background: white;
-      padding: 3rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border-top: 5px solid var(--primary);
-    }
-
-    .form-group label {
+    .input-group label {
       display: block;
-      margin-bottom: 0.7rem;
-      font-weight: 600;
-      color: var(--secondary);
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: var(--accent);
     }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .input-group input,
+    .input-group textarea {
       width: 100%;
       padding: 14px;
-      border: 2px solid #ddd;
-      border-radius: var(--radius);
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: var(--primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--input-bg);
+      color: var(--text);
+      font-size: 16px;
       outline: none;
-      box-shadow: 0 0 0 4px rgba(212,175,55,0.2);
+      transition: all 0.3s;
     }
 
-    .whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      background: #25D366;
-      color: white;
-      padding: 14px 24px;
-      border-radius: 60px;
-      font-weight: 600;
-      transition: var(--transition);
-      margin: 0.8rem 0;
-      box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    .input-group textarea {
+      min-height: 100px;
+      resize: vertical;
     }
 
-    .whatsapp-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(37,211,102,0.5);
+    .input-group input:focus,
+    .input-group textarea:focus {
+      box-shadow: 0 0 15px var(--accent);
     }
 
-    /* Contacto */
-    .contact-info div {
-      margin-bottom: 1.8rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
+    /* === Grids === */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
 
-    .contact-info i {
-      color: var(--primary);
-      font-size: 1.6rem;
-      min-width: 32px;
+    /* === Historial y Plantillas === */
+    .item-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 15px;
     }
 
-    /* Footer */
-    footer {
-      background: var(--secondary);
-      color: white;
+    .item {
+      padding: 10px;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .item:hover {
+      background: var(--accent);
+      color: black;
+    }
+
+    .delete-btn {
+      float: right;
+      color: #ff6b6b;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    /* === Footer === */
+    .footer {
+      margin-top: 30px;
       text-align: center;
-      padding: 5rem 0 3rem;
-      margin-top: 6rem;
-      border-top: 4px solid var(--primary);
-      position: relative;
+      font-size: 14px;
     }
 
     .signature {
-      position: absolute;
-      top: -45px;
-      right: 40px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--primary);
-      background: rgba(0,0,0,0.85);
-      padding: 10px 20px;
-      border-radius: 35px;
-      box-shadow: var(--glow);
+      font-weight: bold;
     }
 
-    .social-icons a {
-      color: white;
-      font-size: 2.1rem;
-      margin: 0 1.5rem;
-      transition: var(--transition);
-    }
-
-    .social-icons a:hover {
-      color: var(--primary);
-      transform: scale(1.4) rotate(15deg);
-      text-shadow: var(--glow);
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 3.8rem; }
-      h2 { font-size: 2.4rem; }
-      .container { padding: 3.5rem 0; }
-      header { height: auto; padding: 180px 20px 140px; }
+    .mod {
+      color: #ff6b6b;
+      font-style: italic;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header id="inicio">
-    <div class="content">
-      <h1>La Magia del Barbero</h1>
-      <p>Donde cada corte es una obra de arte. En el corazón de Andahuaylas, ofrecemos cortes impecables, diseño de barba, tratamientos faciales y capilares con atención personalizada y estilo clásico moderno. Tu transformación comienza aquí.</p>
-      <a href="#reservas" class="btn">Reserva tu Cita Mágica</a>
-    </div>
-  </header>
+  <!-- Fondo de partículas -->
+  <div class="particles" id="particles"></div>
 
-  <!-- Navbar -->
-  <nav id="navbar">
-    <div class="menu-toggle" id="menuToggle">
-      <i class="fas fa-bars"></i>
-      <i class="fas fa-times"></i>
+  <!-- Notificación -->
+  <div id="notification" class="notification"></div>
+
+  <!-- Menú Lateral -->
+  <nav id="sidebar" class="sidebar">
+    <div class="menu-header">
+      <h3><span class="rgb-text">Menu</span></h3>
+      <span class="close-btn" onclick="toggleMenu()">×</span>
     </div>
-    <ul id="navMenu">
-      <li><a href="#inicio" class="active">Inicio</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#promociones">Fidelización</a></li>
-      <li><a href="#testimonios">Clientes</a></li>
-      <li><a href="#equipo">Equipo</a></li>
-      <li><a href="#blog">Tips</a></li>
-      <li><a href="#reservas">Reservar</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+    <ul>
+      <li onclick="switchTab('main')"><i>📝</i> <span data-lang="main">Principal</span></li>
+      <li onclick="switchTab('templates')"><i>📋</i> <span data-lang="templates">Plantillas</span></li>
+      <li onclick="switchTab('custom-templates')"><i>🎨</i> <span data-lang="custom">Mis Plantillas</span></li>
+      <li onclick="switchTab('history')"><i>🕒</i> <span data-lang="history">Historial</span></li>
+      <li onclick="switchTab('settings')"><i>⚙️</i> <span data-lang="settings">Ajustes</span></li>
+      <li onclick="switchTab('about')"><i>ℹ️</i> <span data-lang="about">Info</span></li>
     </ul>
   </nav>
 
-  <!-- Servicios -->
-  <section id="servicios" class="container">
-    <h2>Nuestros Cortes & Tratamientos</h2>
-    <p>En <strong>La Magia del Barbero</strong>, cada estilo tiene nombre, historia y precisión. Descubre tu look ideal.</p>
-    
-    <div class="services-grid">
-      <div class="service-card" data-aos="fade-up">
-        <img src="https://images.unsplash.com/photo-1580480855173-483943e088d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Fade Clásico">
-        <div class="service-content">
-          <span class="cut-name">Corte: Fade Clásico</span>
-          <h3>Corte de Cabello Premium</h3>
-          <p>Diseñamos tu look ideal con tijera, navaja y pasión por el oficio tradicional. Desde fades hasta estilos clásicos.</p>
-        </div>
+  <!-- Contenido Principal -->
+  <div class="container">
+    <header class="header">
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <h1 class="rgb-text">🛸 Spammer Pro</h1>
+    </header>
+
+    <!-- Pestaña: Principal -->
+    <div id="main" class="tab active">
+      <div class="input-group">
+        <label data-lang="number">📞 Número (con +)</label>
+        <input type="tel" id="number" placeholder="+51987654321" />
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Barba Profesional">
-        <div class="service-content">
-          <span class="cut-name">Estilo: Barba Geométrica</span>
-          <h3>Diseño de Barba de Élite</h3>
-          <p>Perfilado profesional, simetría perfecta y productos de alta gama para una barba digna de un rey.</p>
-        </div>
+      <div class="input-group">
+        <label data-lang="message">💬 Mensaje</label>
+        <textarea id="message" placeholder="Escribe tu mensaje..."></textarea>
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-        <img src="https://images.unsplash.com/photo-1599119732520-3ab707e86b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Limpieza Facial">
-        <div class="service-content">
-          <span class="cut-name">Tratamiento: Spa Facial</span>
-          <h3>Tratamiento Facial Completo</h3>
-          <p>Limpieza profunda, exfoliación, vapor y mascarilla. Renueva tu piel como un verdadero caballero.</p>
-        </div>
+      <div class="input-group">
+        <label data-lang="count">🔁 Repetir (1-100)</label>
+        <input type="number" id="count" value="5" min="1" max="100" />
       </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-        <img src="https://images.unsplash.com/photo-1622295056923-9dd5c8663240?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Tratamiento Capilar">
-        <div class="service-content">
-          <span class="cut-name">Reparación: Cabello Seco</span>
-          <h3>Tratamiento Capilar Reparador</h3>
-          <p>Hidratación, fortalecimiento y nutrición profunda. Ideal para cabellos dañados, secos o con caspa.</p>
-        </div>
-      </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-        <img src="https://images.unsplash.com/photo-1584433144071-2b581c647b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Afeitado con Navaja">
-        <div class="service-content">
-          <span class="cut-name">Técnica: Afeitado en Caliente</span>
-          <h3>Afeitado Clásico con Navaja</h3>
-          <p>La experiencia tradicional: espuma caliente, navaja afilada y toallas tibias. Suavidad extrema en cada pasada.</p>
-        </div>
-      </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-        <img src="https://images.unsplash.com/photo-1607990281513-2c110f14a4bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Peinado de Boda">
-        <div class="service-content">
-          <span class="cut-name">Evento: Estilo Elegante</span>
-          <h3>Peinado para Eventos y Bodas</h3>
-          <p>Para bodas, fiestas o fotos. Luce impecable en los momentos importantes con un estilo duradero y elegante.</p>
-        </div>
-      </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-        <img src="https://images.unsplash.com/photo-1568849756951-591e95df6950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Undercut">
-        <div class="service-content">
-          <span class="cut-name">Corte: Undercut Moderno</span>
-          <h3>Estilo Undercut Texturizado</h3>
-          <p>Definición nítida en los laterales y volumen en la parte superior. Ideal para hombres modernos y seguros.</p>
-        </div>
-      </div>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="700">
-        <img src="https://images.unsplash.com/photo-1522735338363-cc7313be0ae0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=90" alt="Pompadour">
-        <div class="service-content">
-          <span class="cut-name">Clásico: Pompadour Retro</span>
-          <h3>Pompadour con Fade</h3>
-          <p>Volumen en la parte superior y fade en los laterales. Un estilo atemporal con toque moderno.</p>
-        </div>
+      <div class="grid-2">
+        <button id="copyBtn" class="btn-neon"><span data-lang="copy">📋 Copiar</span></button>
+        <button id="sendBtn" class="btn-neon"><span data-lang="send">🚀 Enviar</span></button>
       </div>
     </div>
-  </section>
 
-  <!-- Galería -->
-  <section id="galeria" class="container dark">
-    <h2>Galería de Estilo</h2>
-    <p>Descubre algunos de nuestros trabajos más recientes. Cada corte es una transformación.</p>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580480855173-483943e088d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Fade"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Barba"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599119732520-3ab707e86b5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Facial"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1584433144071-2b581c647b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Afeitado"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1607990281513-2c110f14a4bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Evento"></div>
-      <div class="gallery-item"><img src="https://images.unsplash.com/photo-1568849756951-591e95df6950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=90" alt="Undercut"></div>
-    </div>
-  </section>
-
-  <!-- Promociones - Más bonita y clara -->
-  <section id="promociones" class="container">
-    <h2>Programa de Fidelización</h2>
-    <p>Porque tu lealtad merece recompensa…</p>
-
-    <div class="promo">
-      <h3>✨ El Quinto Corte es un Hechizo Gratis ✨</h3>
-      <p>Cada vez que vengas, sellamos tu visita mágica. Al completar <strong>4 servicios</strong>, el <strong>quinto corte es completamente gratis</strong>.</p>
-      <p>Presenta tu tarjeta física en cada visita y acumula tu magia.</p>
-      <p><strong>¡Tu estilo crece, tu recompensa también!</strong></p>
-    </div>
-  </section>
-
-  <!-- Testimonios -->
-  <section id="testimonios" class="container">
-    <h2>Lo que Dicen Nuestros Clientes</h2>
-    <p>Clientes satisfechos, estilos transformados. Aquí hablan desde el corazón.</p>
-    <div class="testimonials" id="testimonialsContainer"></div>
-  </section>
-
-  <!-- Equipo -->
-  <section id="equipo" class="container dark">
-    <h2>Nuestro Equipo de Expertos</h2>
-    <p>Profesionales con años de experiencia, pasión por el oficio y manos de oro.</p>
-    <div class="team-grid">
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1560250097-0b9352761d85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Carlos Mendoza">
-        <h4>Carlos Mendoza</h4>
-        <p>Barbero Senior con 12 años de experiencia. Especialista en cortes clásicos.</p>
-      </div>
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1573496359143-7495f9b0b8b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Luis Fernández">
-        <h4>Luis Fernández</h4>
-        <p>Diseñador de barbas y tratamientos faciales. Innovador y detallista.</p>
-      </div>
-      <div class="team-member">
-        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Jorge Linares">
-        <h4>Jorge Linares</h4>
-        <p>Experto en tratamientos capilares y peinados para eventos.</p>
+    <!-- Plantillas Predefinidas -->
+    <div id="templates" class="tab">
+      <h3 class="rgb-text"><span data-lang="predefined">✨ Plantillas</span></h3>
+      <div class="grid-2">
+        <div class="item" data-msg="❤️❤️❤️❤️❤️">❤️ Corazones</div>
+        <div class="item" data-msg="🎉🎉🎉🎉🎉">🎉 Fiesta</div>
+        <div class="item" data-msg="🤣🤣🤣🤣🤣">🤣 Risa</div>
+        <div class="item" data-msg="🔥🔥🔥🔥🔥">🔥 Fuego</div>
       </div>
     </div>
-  </section>
 
-  <!-- Blog -->
-  <section id="blog" class="container">
-    <h2>Consejos de Estilo</h2>
-    <p>Pequeños tips para mantener tu look impecable entre visitas.</p>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1593030103066-0093718ef81a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cuidado barba">
-        <div class="blog-content">
-          <h3>Cómo cuidar tu barba en casa</h3>
-          <p>Lava, hidrata y peina diariamente. Usa aceite de barba para evitar la picazón.</p>
-        </div>
+    <!-- Mis Plantillas -->
+    <div id="custom-templates" class="tab">
+      <h3 class="rgb-text"><span data-lang="my-templates">🎨 Mis Plantillas</span></h3>
+      <div class="input-group">
+        <label><span data-lang="new-template">➕ Nueva Plantilla</span></label>
+        <input type="text" id="newTemplate" placeholder="Nombre" />
+        <textarea id="newTemplateMsg" placeholder="Mensaje" style="margin-top: 5px;"></textarea>
+        <button id="saveTemplate" class="btn-neon" style="margin-top: 10px;">💾 Guardar</button>
       </div>
-      <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tendencias">
-        <div class="blog-content">
-          <h3>Los cortes del momento en 2025</h3>
-          <p>Desde el fade texturizado hasta el pompadour moderno, te mostramos las tendencias.</p>
-        </div>
+      <div class="item-list" id="userTemplates"></div>
+    </div>
+
+    <!-- Historial -->
+    <div id="history" class="tab">
+      <h3 class="rgb-text"><span data-lang="history-title">🕒 Historial de Envíos</span></h3>
+      <div class="item-list" id="historyList"></div>
+      <button id="clearHistory" class="btn-neon" style="margin-top: 10px;">🗑️ Limpiar</button>
+    </div>
+
+    <!-- Ajustes -->
+    <div id="settings" class="tab">
+      <h3 class="rgb-text"><span data-lang="settings">⚙️ Ajustes</span></h3>
+      <div class="input-group">
+        <label><span data-lang="lang">🌐 Idioma</span></label>
+        <select id="langSelect" onchange="changeLang()">
+          <option value="es">🇪🇸 Español</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="pt">🇧🇷 Português</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
       </div>
-      <div class="blog-card">
-        <img src="https://images.unsplash.com/photo-1562322140-8baeececf3b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reserva">
-        <div class="blog-content">
-          <h3>Por qué reservar es clave</h3>
-          <p>Evita esperas, asegura tu horario y disfruta de un servicio personalizado.</p>
-        </div>
+      <div class="input-group">
+        <label><span data-lang="sound">🔊 Sonido</span></label>
+        <input type="checkbox" id="soundToggle" checked />
+      </div>
+      <div class="input-group">
+        <label><span data-lang="delay">⏱️ Retraso (ms)</span></label>
+        <input type="number" id="delayInput" placeholder="0" />
       </div>
     </div>
-  </section>
 
-  <!-- Reservas -->
-  <section id="reservas" class="container">
-    <h2>Reserva tu Transformación</h2>
-    <p>Llena el formulario y te contactaremos por WhatsApp para confirmar tu cita. ¡Tu estilo espera!</p>
-    
-    <div class="booking-container">
-      <div class="booking-info">
-        <h3>¿Por qué reservar?</h3>
-        <p>Evita esperas, asegura tu horario y disfruta de un servicio personalizado sin interrupciones.</p>
-        <p>¿Prefieres hablar directamente?</p>
-        <a href="https://wa.me/51977355999" target="_blank" class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> WhatsApp: 977 355 999
-        </a>
-        <a href="https://wa.me/51931538059" target="_blank" class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i> WhatsApp: 931 538 059
-        </a>
-      </div>
-
-      <form class="booking-form" id="bookingForm">
-        <div class="form-group">
-          <label for="name">Nombre Completo</label>
-          <input type="text" id="name" name="name" required placeholder="Ej. Juan Pérez">
-        </div>
-        <div class="form-group">
-          <label for="phone">Teléfono (para WhatsApp)</label>
-          <input type="tel" id="phone" name="phone" required placeholder="Ej. 987654321">
-        </div>
-        <div class="form-group">
-          <label for="service">Servicio que deseas</label>
-          <select id="service" name="service" required>
-            <option value="">Selecciona un servicio</option>
-            <option value="Corte de Cabello">Corte de Cabello</option>
-            <option value="Diseño de Barba">Diseño de Barba</option>
-            <option value="Tratamiento Facial">Tratamiento Facial</option>
-            <option value="Tratamiento Capilar">Tratamiento Capilar</option>
-            <option value="Afeitado Clásico">Afeitado Clásico con Navaja</option>
-            <option value="Peinado para Eventos">Peinado para Eventos</option>
-            <option value="Combo: Corte + Barba">Combo: Corte + Barba</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Fecha deseada</label>
-          <input type="date" id="date" name="date" required>
-        </div>
-        <div class="form-group">
-          <label for="time">Hora preferida</label>
-          <input type="time" id="time" name="time" required>
-        </div>
-        <div class="form-group">
-          <label for="notes">Notas o preferencias</label>
-          <textarea id="notes" name="notes" rows="3" placeholder="¿Tienes algún estilo en mente?"></textarea>
-        </div>
-        <button type="submit" class="btn">Reservar → Enviar a WhatsApp</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section id="contacto" class="container dark">
-    <h2>Encuéntranos en Andahuaylas</h2>
-    <div class="contact-info">
-      <div>
-        <i class="fas fa-map-marker-alt"></i>
-        <div>
-          <strong>Dirección:</strong><br>
-          Jr. Lima 123, Centro, Andahuaylas, Apurímac, Perú
-        </div>
-      </div>
-      <div>
-        <i class="fas fa-phone"></i>
-        <div>
-          <strong>WhatsApp:</strong><br>
-          <a href="https://wa.me/51977355999">977 355 999</a> y <a href="https://wa.me/51931538059">931 538 059</a>
-        </div>
-      </div>
-      <div>
-        <i class="fas fa-clock"></i>
-        <div>
-          <strong>Horario:</strong><br>
-          Lunes a Sábado: 8:00 AM – 7:00 PM<br>
-          Domingo: 9:00 AM – 3:00 PM
-        </div>
-      </div>
-      <div>
-        <i class="fas fa-envelope"></i>
-        <div>
-          <strong>Email:</strong><br>
-          <a href="mailto:lamagiadelbarbero.and@gmail.com">lamagiadelbarbero.and@gmail.com</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="signature">by AnthZz Berrocal</div>
-    <div class="container">
-      <p>&copy; 2025 La Magia del Barbero. Todos los derechos reservados.</p>
-      <p>Andahuaylas, Apurímac, Perú</p>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a>
-      </div>
-      <p style="font-size: 0.95rem; margin-top: 1.2rem;">
-        Diseñado con <span style="color: var(--primary);">✂️</span> para los caballeros que creen en la verdadera magia del estilo.
+    <!-- Info -->
+    <div id="about" class="tab">
+      <h3 class="rgb-text">ℹ️ Info</h3>
+      <p><strong>App:</strong> WhatsApp Spammer Pro</p>
+      <p><strong>Dev:</strong> AnthZz Berrocal</p>
+      <p><strong>Brand:</strong> BerMatMods</p>
+      <p style="margin:15px 0;"><span data-lang="pwa">📲 Instalable como app (PWA)</span></p>
+      <p style="color:#ff6b6b; font-size:12px;">
+        ⚠️ <span data-lang="warn">Uso responsable. No spamees sin permiso.</span>
       </p>
     </div>
-  </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <footer class="footer">
+      <p>✨ by <span class="signature rgb-text">AnthZz Berrocal</span> | <span class="mod">BerMatMods</span></p>
+    </footer>
+  </div>
+
+  <!-- Sonido -->
+  <audio id="notifSound" src="https://assets.mixkit.co/sfx/preview/mixkit-software-interface-start-2574.mp3" preload="auto"></audio>
+
   <script>
-    AOS.init({ duration: 900, easing: 'ease-in-out', once: true });
+    // === Traducción ===
+    const langTexts = {
+      es: { main: "Principal", templates: "Plantillas", custom: "Mis Plantillas", history: "Historial", settings: "Ajustes", about: "Info", number: "📞 Número (con +)", message: "💬 Mensaje", count: "🔁 Repetir (1-100)", copy: "📋 Copiar", send: "🚀 Enviar", predefined: "✨ Plantillas", "my-templates": "🎨 Mis Plantillas", "new-template": "➕ Nueva Plantilla", "history-title": "🕒 Historial de Envíos", lang: "🌐 Idioma", sound: "🔊 Sonido", delay: "⏱️ Retraso (ms)", pwa: "📲 Instalable como app (PWA)", warn: "Uso responsable. No spamees sin permiso." },
+      en: { main: "Main", templates: "Templates", custom: "My Templates", history: "History", settings: "Settings", about: "Info", number: "📞 Number (+)", message: "💬 Message", count: "🔁 Repeat (1-100)", copy: "📋 Copy", send: "🚀 Send", predefined: "✨ Templates", "my-templates": "🎨 My Templates", "new-template": "➕ New Template", "history-title": "🕒 Send History", lang: "🌐 Language", sound: "🔊 Sound", delay: "⏱️ Delay (ms)", pwa: "📲 Installable as app (PWA)", warn: "Use responsibly. Don't spam without permission." },
+      pt: { main: "Principal", templates: "Modelos", custom: "Meus Modelos", history: "Histórico", settings: "Configurações", about: "Info", number: "📞 Número (+)", message: "💬 Mensagem", count: "🔁 Repetir (1-100)", copy: "📋 Copiar", send: "🚀 Enviar", predefined: "✨ Modelos", "my-templates": "🎨 Meus Modelos", "new-template": "➕ Novo Modelo", "history-title": "🕒 Histórico", lang: "🌐 Idioma", sound: "🔊 Som", delay: "⏱️ Atraso (ms)", pwa: "📲 Instalável como app (PWA)", warn: "Use com responsabilidade. Não envie spam sem permissão." },
+      fr: { main: "Principal", templates: "Modèles", custom: "Mes Modèles", history: "Historique", settings: "Paramètres", about: "Info", number: "📞 Numéro (+)", message: "💬 Message", count: "🔁 Répéter (1-100)", copy: "📋 Copier", send: "🚀 Envoyer", predefined: "✨ Modèles", "my-templates": "🎨 Mes Modèles", "new-template": "➕ Nouveau Modèle", "history-title": "🕒 Historique", lang: "🌐 Langue", sound: "🔊 Son", delay: "⏱️ Délai (ms)", pwa: "📲 Installable comme app (PWA)", warn: "Utilisez de manière responsable. Ne spammez pas sans autorisation." }
+    };
 
-    // Menú hamburguesa
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
+    function changeLang() {
+      const lang = document.getElementById('langSelect').value;
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        const key = el.getAttribute('data-lang');
+        if (langTexts[lang] && langTexts[lang][key]) {
+          el.innerText = langTexts[lang][key];
+        }
+      });
+      localStorage.setItem('spammer-lang', lang);
+    }
 
-    menuToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-    });
+    // Cargar idioma
+    window.onload = () => {
+      const savedLang = localStorage.getItem('spammer-lang') || 'es';
+      document.getElementById('langSelect').value = savedLang;
+      changeLang();
 
-    document.querySelectorAll('#navMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        menuToggle.classList.remove('active');
+      const savedTheme = localStorage.getItem('spammer-theme') || 'neon';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+
+      loadTemplates();
+      loadHistory();
+      createParticles();
+    };
+
+    // === Menú ===
+    function toggleMenu() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    function switchTab(id) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      toggleMenu();
+    }
+
+    // === Partículas ===
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 50; i++) {
+        const p = document.createElement('div');
+        p.classList.add('particle');
+        p.style.width = Math.random() * 10 + 5 + 'px';
+        p.style.height = p.style.width;
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.top = Math.random() * 100 + 'vh';
+        p.style.backgroundColor = ['#ff00ff', '#00ffff', '#ffff00', '#ff8800'][Math.floor(Math.random() * 4)];
+        p.style.animationDuration = Math.random() * 20 + 10 + 's';
+        p.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(p);
+      }
+    }
+
+    // === Plantillas ===
+    document.querySelectorAll('.item[data-msg]').forEach(item => {
+      item.addEventListener('click', () => {
+        document.getElementById('message').value = item.getAttribute('data-msg');
+        showNotification('✅ Cargado');
       });
     });
 
-    // Testimonios
-    const testimonials = [
-      "¡Quedé como nuevo! El corte fue impecable y la atención, de otro nivel.",
-      "La barba quedó perfecta. Desde que vine, no voy a otro lado.",
-      "El quinto corte gratis es real. ¡Gracias por la magia!",
-      "Ambiente clásico, música vintage y un barbero con manos de oro.",
-      "Mi hijo quedó encantado. Volveremos cada mes.",
-      "Tratamiento facial muy relajante. Mi piel quedó renovada.",
-      "El combo corte + barba es lo mejor. 100% recomendado."
-    ];
-    const names = ["Carlos M.", "Jorge L.", "Andrés R.", "Luis F.", "Rosa T.", "Ana P.", "Miguel S."];
+    // === Guardar plantillas personalizadas ===
+    document.getElementById('saveTemplate').addEventListener('click', () => {
+      const name = document.getElementById('newTemplate').value.trim();
+      const msg = document.getElementById('newTemplateMsg').value.trim();
+      if (!name || !msg) return showNotification('⚠️ Completa ambos campos');
 
-    const container = document.getElementById('testimonialsContainer');
-    testimonials.forEach((text, i) => {
-      const el = document.createElement('div');
-      el.className = 'testimonial';
-      el.innerHTML = `
-        <i class="fas fa-star"></i>
-        <p>"${text}"</p>
-        <strong>— ${names[i]}</strong>
-      `;
-      container.appendChild(el);
+      let templates = JSON.parse(localStorage.getItem('userTemplates') || '[]');
+      templates.push({ name, msg });
+      localStorage.setItem('userTemplates', JSON.stringify(templates));
+      document.getElementById('newTemplate').value = '';
+      document.getElementById('newTemplateMsg').value = '';
+      loadTemplates();
+      showNotification('🎨 Plantilla guardada');
     });
-    AOS.refresh();
 
-    // Formulario → WhatsApp (sin mostrar el número del cliente)
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+    function loadTemplates() {
+      const container = document.getElementById('userTemplates');
+      container.innerHTML = '';
+      const templates = JSON.parse(localStorage.getItem('userTemplates') || '[]');
+      templates.forEach((t, i) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `${t.msg} <span class="delete-btn" onclick="deleteTemplate(${i})">🗑️</span>`;
+        div.onclick = (e) => {
+          if (!e.target.classList.contains('delete-btn')) {
+            document.getElementById('message').value = t.msg;
+            showNotification('✅ Cargado: ' + t.name);
+          }
+        };
+        container.appendChild(div);
+      });
+    }
 
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const service = document.getElementById('service').value;
-      const date = document.getElementById('date').value;
-      const time = document.getElementById('time').value;
-      const notes = document.getElementById('notes').value || 'Sin notas';
+    function deleteTemplate(index) {
+      let templates = JSON.parse(localStorage.getItem('userTemplates') || '[]');
+      templates.splice(index, 1);
+      localStorage.setItem('userTemplates', JSON.stringify(templates));
+      loadTemplates();
+    }
 
-      const message = `
-🌟 *RESERVA EN "LA MAGIA DEL BARBERO"* 🌟
+    // === Historial ===
+    function addToHistory(number, message, count) {
+      const entry = { number, message, count, time: new Date().toLocaleString() };
+      let history = JSON.parse(localStorage.getItem('sendHistory') || '[]');
+      history.unshift(entry);
+      if (history.length > 50) history.pop();
+      localStorage.setItem('sendHistory', JSON.stringify(history));
+      loadHistory();
+    }
 
-📌 *Nombre:* ${name}
-💈 *Servicio:* ${service}
-📅 *Fecha:* ${date}
-⏰ *Hora:* ${time}
-📝 *Notas:* ${notes}
+    function loadHistory() {
+      const container = document.getElementById('historyList');
+      container.innerHTML = '';
+      const history = JSON.parse(localStorage.getItem('sendHistory') || '[]');
+      history.forEach(h => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.textContent = `${h.message.substring(0, 30)}... x${h.count}`;
+        div.title = `Enviado a ${h.number} - ${h.time}`;
+        div.onclick = () => {
+          document.getElementById('number').value = h.number;
+          document.getElementById('message').value = h.message;
+          document.getElementById('count').value = h.count;
+          switchTab('main');
+        };
+        container.appendChild(div);
+      });
+    }
 
-🔥💈
-      `.trim();
-
-      const encoded = encodeURIComponent(message);
-      const numbers = ['51977355999', '51931538059'];
-      const random = numbers[Math.floor(Math.random() * numbers.length)];
-      window.open(`https://wa.me/${random}?text=${encoded}`, '_blank');
+    document.getElementById('clearHistory').addEventListener('click', () => {
+      localStorage.removeItem('sendHistory');
+      loadHistory();
+      showNotification('🗑️ Historial limpio');
     });
+
+    // === Enviar ===
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const number = document.getElementById('number').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const count = parseInt(document.getElementById('count').value) || 1;
+      const delay = parseInt(document.getElementById('delayInput').value) || 0;
+
+      if (!number || !message) return showNotification('⚠️ Completa los campos');
+
+      const repeated = message.repeat(count);
+      const encoded = encodeURIComponent(repeated);
+      const url = `https://wa.me/${number.replace(/\s/g, '')}?text=${encoded}`;
+
+      addToHistory(number, message, count);
+
+      if (delay > 0) {
+        showNotification(`⏳ En ${delay}ms...`);
+        setTimeout(() => window.open(url, '_blank'), delay);
+      } else {
+        window.open(url, '_blank');
+      }
+
+      playSound();
+      showNotification('🚀 Enviado');
+    });
+
+    // === Copiar ===
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const msg = document.getElementById('message').value.repeat(document.getElementById('count').value || 1);
+      navigator.clipboard.writeText(msg).then(() => {
+        playSound();
+        showNotification('📋 Copiado');
+      });
+    });
+
+    // === Sonido ===
+    function playSound() {
+      if (document.getElementById('soundToggle').checked) {
+        document.getElementById('notifSound').play().catch(() => {});
+      }
+    }
+
+    // === Notificación ===
+    function showNotification(msg) {
+      const notif = document.getElementById('notification');
+      notif.textContent = msg;
+      notif.classList.add('show');
+      setTimeout(() => notif.classList.remove('show'), 3000);
+    }
   </script>
-
 </body>
 </html>
