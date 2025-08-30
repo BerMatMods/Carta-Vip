@@ -113,6 +113,40 @@
       margin-bottom: 1rem;
     }
 
+    /* Información del creador con estilo */
+    .dev-info {
+      background: linear-gradient(135deg, #ffe6f0, #f8dafa);
+      border-radius: 16px;
+      padding: 1.2rem;
+      margin: 1.5rem 0;
+      border: 2px solid #ffb6c1;
+      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15);
+      text-align: center;
+    }
+
+    .dev-info h4 {
+      font-family: 'Playfair Display', serif;
+      color: #e91e63;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .dev-info p {
+      color: #777;
+      font-size: 0.9rem;
+      margin: 0.3rem 0;
+    }
+
+    .dev-info .tag {
+      display: inline-block;
+      background: #e91e63;
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-top: 0.5rem;
+    }
+
     .whatsapp-btn {
       display: block;
       margin: 1.8rem 0 0;
@@ -512,6 +546,28 @@
       opacity: 0.7 !important;
     }
 
+    /* Cuadro de amor final */
+    .final-love-note {
+      margin: 2rem auto;
+      max-width: 400px;
+      background: linear-gradient(135deg, #ffe6f0, #f8dafa);
+      border-radius: 20px;
+      padding: 1.4rem;
+      border: 3px solid #ffb6c1;
+      box-shadow: 0 6px 18px rgba(233, 30, 99, 0.2);
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: #e91e63;
+      position: relative;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* Media queries */
     @media (max-width: 480px) {
       .menu-btn { top: 15px; left: 15px; width: 45px; height: 45px; }
       .menu { width: 260px; }
@@ -539,6 +595,11 @@
         font-size: 1.2rem;
         padding: 0.9rem 2rem;
       }
+
+      .final-love-note {
+        font-size: 1.6rem;
+        padding: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -556,8 +617,16 @@
     <img src="https://i.postimg.cc/MThLTg2k/Screenshot-20250826-182522.jpg" alt="Logo de AnthZz Berrocal" class="menu-logo">
     <div class="close-menu" onclick="toggleMenu()">✕</div>
 
-    <h3>ℹ️ ¿Quieres contenido personalizado?</h3>
-    <p>Si quieres código, personalizar esta carta o desarrollar otros proyectos, contáctame a mi WhatsApp.</p>
+    <h3>ℹ️ Sobre mí</h3>
+    <div class="dev-info">
+      <h4>AnthZz Berrocal</h4>
+      <p>Diseñador web y desarrollador apasionado</p>
+      <p>Creador de experiencias únicas</p>
+      <span class="tag">BerMatMods</span>
+    </div>
+
+    <h3>💬 Contáctame</h3>
+    <p>Si quieres personalizar esta carta o desarrollar proyectos juntos, escríbeme por WhatsApp.</p>
     <a href="https://wa.me/51937556459" target="_blank" class="whatsapp-btn">💬 Contactar por WhatsApp</a>
   </div>
 
@@ -573,7 +642,7 @@
 
   <!-- Pantalla de bloqueo -->
   <div id="lockScreen" class="lock-screen">
-    <h2>🔐 Tu Carta de Amor</h2>
+    <h2>🔐 Tu Carta mi Amor</h2>
     <p>👇INGRESA EL CÓDIGO DE ACCESO 👇</p>
 
     <div class="gif-frame">
@@ -614,25 +683,23 @@
       <footer>Con todo mi corazón, siempre tuyo.</footer>
     </div>
 
-    <div class="gif-frame" style="margin-top: 2.2rem;">
+    <!-- Cuadro de amor final -->
+    <div class="final-love-note">
+      Te amo muchísimo mi amor 💖
+    </div>
+
+    <div class="gif-frame" style="margin-top: 1.5rem;">
       <img src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyMHR3Ym5zNjF2emowZnZ5cWltZmJ6ZGRuaDM2ZXU5eDR1bWl6aHd1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OJZZsbgcYvSSz5yA7K/giphy.gif" alt="Explosión de corazones" width="220" height="220" />
     </div>
 
     <p class="dev-text">Desarrollado por AnthZz Berrocal</p>
   </div>
 
-  <!-- Reproductor de YouTube oculto para música de fondo -->
-  <div style="position: fixed; top: -9999px;">
-    <iframe 
-      id="musicPlayer" 
-      width="0" 
-      height="0" 
-      src="https://www.youtube.com/embed/oiGCL2Ld534?start=102&autoplay=1&loop=1&playlist=oiGCL2Ld534&controls=0&modestbranding=1&mute=0&playsinline=1" 
-      frameborder="0" 
-      allow="autoplay; loop; encrypted-media" 
-      allowfullscreen>
-    </iframe>
-  </div>
+  <!-- Reproductor de audio desde Jumpshare -->
+  <audio id="bgMusic" loop>
+    <source src="https://jumpshare.com/s/VICul1e9DnoH0xmuNAwA" type="audio/mp3">
+    Tu navegador no soporta audio.
+  </audio>
 
   <script>
     let input = '';
@@ -640,35 +707,14 @@
     let nombreYo = 'Isaac Joon-pyo'; // Nombre fijo
     let nombreElla = 'Roxana'; // Nombre fijo
 
-    // Acceso al reproductor de YouTube
-    let player;
-
-    // Inicializar YouTube IFrame API
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('musicPlayer', {
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerReady(event) {
-      // No hacemos nada aquí, el autoplay ya está activado
-    }
-
-    function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.ENDED) {
-        player.playVideo(); // Repetir si termina
+    // Reproducir música al interactuar
+    document.body.addEventListener('click', function() {
+      const audio = document.getElementById('bgMusic');
+      if (audio && !audio.hasPlayed) {
+        audio.play().catch(e => console.log("Error al reproducir audio:", e));
+        audio.hasPlayed = true;
       }
-    }
-
-    // Cargar la API de YouTube
-    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }, { once: true });
 
     function addDigit(digit) {
       if (input.length < 8) {
@@ -693,12 +739,12 @@
         typeWriter();
         createHearts();
 
-        // Intentar reproducir música si no está sonando
-        setTimeout(() => {
-          if (player && player.playVideo) {
-            player.playVideo();
-          }
-        }, 1000);
+        // Intentar reproducir música
+        const audio = document.getElementById('bgMusic');
+        if (audio && !audio.hasPlayed) {
+          audio.play().catch(e => console.log("No se pudo reproducir:", e));
+          audio.hasPlayed = true;
+        }
       } else {
         document.getElementById('errorModal').classList.add('active');
         clearInput();
