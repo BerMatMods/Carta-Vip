@@ -556,7 +556,7 @@
     <img src="https://i.postimg.cc/MThLTg2k/Screenshot-20250826-182522.jpg" alt="Logo de AnthZz Berrocal" class="menu-logo">
     <div class="close-menu" onclick="toggleMenu()">✕</div>
 
-    <h3>ℹ️ ¿Quieres Personalizar?</h3>
+    <h3>ℹ️ ¿Quieres contenido personalizado?</h3>
     <p>Si quieres código, personalizar esta carta o desarrollar otros proyectos, contáctame a mi WhatsApp.</p>
     <a href="https://wa.me/51937556459" target="_blank" class="whatsapp-btn">💬 Contactar por WhatsApp</a>
   </div>
@@ -621,11 +621,54 @@
     <p class="dev-text">Desarrollado por AnthZz Berrocal</p>
   </div>
 
+  <!-- Reproductor de YouTube oculto para música de fondo -->
+  <div style="position: fixed; top: -9999px;">
+    <iframe 
+      id="musicPlayer" 
+      width="0" 
+      height="0" 
+      src="https://www.youtube.com/embed/oiGCL2Ld534?start=102&autoplay=1&loop=1&playlist=oiGCL2Ld534&controls=0&modestbranding=1&mute=0&playsinline=1" 
+      frameborder="0" 
+      allow="autoplay; loop; encrypted-media" 
+      allowfullscreen>
+    </iframe>
+  </div>
+
   <script>
     let input = '';
     const correctKey = '25/08/25'; // Código de acceso
     let nombreYo = 'Isaac Joon-pyo'; // Nombre fijo
     let nombreElla = 'Roxana'; // Nombre fijo
+
+    // Acceso al reproductor de YouTube
+    let player;
+
+    // Inicializar YouTube IFrame API
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('musicPlayer', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // No hacemos nada aquí, el autoplay ya está activado
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.ENDED) {
+        player.playVideo(); // Repetir si termina
+      }
+    }
+
+    // Cargar la API de YouTube
+    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     function addDigit(digit) {
       if (input.length < 8) {
@@ -649,6 +692,13 @@
         document.getElementById('mainContainer').style.display = 'block';
         typeWriter();
         createHearts();
+
+        // Intentar reproducir música si no está sonando
+        setTimeout(() => {
+          if (player && player.playVideo) {
+            player.playVideo();
+          }
+        }, 1000);
       } else {
         document.getElementById('errorModal').classList.add('active');
         clearInput();
