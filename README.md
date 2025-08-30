@@ -106,24 +106,13 @@
       padding-bottom: 0.5rem;
     }
 
-    .menu label {
-      display: block;
-      margin: 1rem 0 0.5rem;
-      color: #777;
+    .menu p {
+      color: #555;
       font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
     }
 
-    .menu input {
-      width: 100%;
-      padding: 0.8rem;
-      border: 2px solid #ffb6c1;
-      border-radius: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 1rem;
-      background: #fff8fa;
-    }
-
-    /* Botón WhatsApp bonito */
     .whatsapp-btn {
       display: block;
       margin: 1.8rem 0 0;
@@ -467,25 +456,33 @@
       font-size: 1.15rem;
     }
 
-    /* Corazones flotando */
+    /* Corazones flotando mejorados */
     .floating-heart {
-      position: absolute;
-      font-size: 20px;
+      position: fixed;
       pointer-events: none;
+      z-index: 10;
       opacity: 0;
-      z-index: 1;
+      user-select: none;
       animation: floatUp 15s ease-in-out infinite, blink 3s ease-in-out infinite;
+      font-size: 18px;
+      left: 0;
+      top: 100vh;
+      transform-origin: bottom;
     }
 
     @keyframes floatUp {
       0% {
-        transform: translateY(100vh) rotate(0deg);
+        transform: translateY(0) rotate(0deg);
         opacity: 0;
       }
-      10% { opacity: 0.9; }
-      90% { opacity: 0.9; }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
       100% {
-        transform: translateY(-20vh) rotate(360deg);
+        transform: translateY(-110vh) rotate(360deg);
         opacity: 0;
       }
     }
@@ -493,6 +490,26 @@
     @keyframes blink {
       0%, 100% { opacity: 0.6; }
       50% { opacity: 1; }
+    }
+
+    .heart-small {
+      font-size: 14px !important;
+      animation-duration: 12s, 2.5s !important;
+    }
+
+    .heart-large {
+      font-size: 24px !important;
+      animation-duration: 18s, 4s !important;
+      opacity: 0.9 !important;
+    }
+
+    .heart-slow {
+      animation-duration: 20s, 3.5s !important;
+    }
+
+    .heart-fast {
+      animation-duration: 10s, 2s !important;
+      opacity: 0.7 !important;
     }
 
     @media (max-width: 480px) {
@@ -537,23 +554,11 @@
   <!-- Menú desplegable -->
   <div id="menu" class="menu">
     <img src="https://i.postimg.cc/MThLTg2k/Screenshot-20250826-182522.jpg" alt="Logo de AnthZz Berrocal" class="menu-logo">
-
     <div class="close-menu" onclick="toggleMenu()">✕</div>
 
-    <h3>✏️ Personaliza tu Carta</h3>
-    <label>Tu Nombre</label>
-    <input type="text" id="nombreYo" value="Isaac Joon-pyo" oninput="actualizarNombres()">
-
-    <label>Nombre de tu Novia</label>
-    <input type="text" id="nombreElla" value="Roxana" oninput="actualizarNombres()">
-
-    <h3>ℹ️ ¿Quieres más?</h3>
-    <p style="color: #555; font-size: 0.95rem; line-height: 1.5;">
-      Si quieres código, personalizar esta carta o desarrollar otros proyectos, contáctame a mi WhatsApp.
-    </p>
-    <a href="https://wa.me/51937556459" target="_blank" class="whatsapp-btn">
-      💬 Contactar por WhatsApp
-    </a>
+    <h3>ℹ️ ¿Quieres Personalizar?</h3>
+    <p>Si quieres código, personalizar esta carta o desarrollar otros proyectos, contáctame a mi WhatsApp.</p>
+    <a href="https://wa.me/51937556459" target="_blank" class="whatsapp-btn">💬 Contactar por WhatsApp</a>
   </div>
 
   <!-- Cuadro de error personalizado -->
@@ -562,9 +567,7 @@
       <div class="close-error" onclick="cerrarError()">×</div>
       <h3>⚠️ Código Incorrecto</h3>
       <p>El código que ingresaste es incorrecto. Comunícate con el creador para obtener el acceso correcto.</p>
-      <a href="https://wa.me/51937556459" target="_blank" class="error-whatsapp">
-        📱 Contactar por WhatsApp
-      </a>
+      <a href="https://wa.me/51937556459" target="_blank" class="error-whatsapp">📱 Contactar por WhatsApp</a>
     </div>
   </div>
 
@@ -620,9 +623,9 @@
 
   <script>
     let input = '';
-    const correctKey = '25/08/25';
-    let nombreYo = 'Isaac Joon-pyo';
-    let nombreElla = 'Roxana';
+    const correctKey = '25/08/25'; // Código de acceso
+    let nombreYo = 'Isaac Joon-pyo'; // Nombre fijo
+    let nombreElla = 'Roxana'; // Nombre fijo
 
     function addDigit(digit) {
       if (input.length < 8) {
@@ -647,33 +650,19 @@
         typeWriter();
         createHearts();
       } else {
-        // Mostrar cuadro de error personalizado
         document.getElementById('errorModal').classList.add('active');
         clearInput();
       }
     }
 
-    // Cerrar cuadro de error
     function cerrarError() {
       document.getElementById('errorModal').classList.remove('active');
     }
 
-    // Abrir/cerrar menú
     function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('open');
+      document.getElementById('menu').classList.toggle('open');
     }
 
-    // Actualizar nombres
-    function actualizarNombres() {
-      nombreYo = document.getElementById('nombreYo').value || 'AnthZz Berrocal';
-      nombreElla = document.getElementById('nombreElla').value || 'Yorchi';
-      if (document.getElementById('letter').textContent) {
-        typeWriter();
-      }
-    }
-
-    // Mensaje con nombres
     function getMessage() {
       return `Mi amor ${nombreElla},
 
@@ -700,11 +689,10 @@ más de lo que el universo puede contener.
 
 Siempre serás mi hogar, mi sueño, mi razón.
 
-Con todo mi el amor del mundo att:,
+Con todo mi amor del mundo att:,
 ${nombreYo} 💖`;
     }
 
-    // Efecto de escritura
     function typeWriter() {
       const letterElement = document.getElementById('letter');
       letterElement.textContent = '';
@@ -725,22 +713,36 @@ ${nombreYo} 💖`;
       setTimeout(type, 300);
     }
 
-    // Corazones flotando
+    // Corazones flotando mejorados
     function createHearts() {
-      const hearts = ['❤️', '💖', '💕', '💓', '💗', '💞', '💘'];
+      const hearts = ['❤️', '💖', '💕', '💓', '💗', '💞', '💘', '💌'];
+      
+      const random = (min, max) => Math.random() * (max - min) + min;
+
       setInterval(() => {
         const heart = document.createElement('div');
         heart.className = 'floating-heart';
         heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        heart.style.left = Math.random() * 90 + 5 + 'vw';
-        heart.style.animationDuration = (Math.random() * 8 + 12) + 's';
-        heart.style.animationDelay = Math.random() * 5 + 's';
+
+        heart.style.left = random(5, 90) + 'vw';
+
+        // Clases aleatorias
+        const size = Math.random();
+        if (size < 0.3) heart.classList.add('heart-small');
+        else if (size > 0.8) heart.classList.add('heart-large');
+
+        const speed = Math.random();
+        if (speed < 0.3) heart.classList.add('heart-slow');
+        else if (speed > 0.7) heart.classList.add('heart-fast');
+
+        heart.style.animationDelay = random(0, 5) + 's';
+
         document.body.appendChild(heart);
 
         setTimeout(() => {
           heart.remove();
-        }, 18000);
-      }, 2500);
+        }, 20000);
+      }, 1500);
     }
   </script>
 </body>
