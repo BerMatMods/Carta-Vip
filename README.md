@@ -1,4 +1,3 @@
-
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -17,7 +16,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #fff5f8, #f9e6ff, #ffe6f0);
+      background: linear-gradient(135deg, #fff0f5, #f8bbd0, #ffecf0);
       color: #444;
       min-height: 100vh;
       display: flex;
@@ -27,6 +26,7 @@
       padding: 20px;
       overflow-x: hidden;
       position: relative;
+      filter: saturate(1.5); /* Aumenta saturación global */
     }
 
     /* Botón del menú (3 rayitas) */
@@ -36,7 +36,7 @@
       left: 20px;
       width: 50px;
       height: 50px;
-      background: rgba(233, 30, 99, 0.2);
+      background: rgba(233, 30, 99, 0.3);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -44,7 +44,7 @@
       align-items: center;
       cursor: pointer;
       z-index: 100;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
       transition: all 0.3s;
     }
 
@@ -60,7 +60,7 @@
 
     .menu-btn:hover {
       transform: scale(1.1);
-      background: rgba(233, 30, 99, 0.3);
+      background: rgba(233, 30, 99, 0.4);
     }
 
     /* Menú desplegable */
@@ -72,12 +72,12 @@
       height: 100vh;
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(10px);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 40px rgba(233, 30, 99, 0.3);
       padding: 60px 20px 20px;
       transition: left 0.4s ease;
       z-index: 99;
       border-radius: 0 20px 20px 0;
-      border-left: 3px solid #e91e63;
+      border-left: 4px solid #e91e63;
       overflow-y: auto;
     }
 
@@ -85,14 +85,14 @@
       left: 0;
     }
 
-    /* Logo circular (ahora más grande) */
+    /* Logo circular */
     .menu-logo {
       width: 100px;
       height: 100px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #e91e63;
-      box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+      box-shadow: 0 6px 16px rgba(233, 30, 99, 0.4);
       margin: 0 auto 1.2rem;
       display: block;
     }
@@ -113,14 +113,14 @@
       margin-bottom: 1rem;
     }
 
-    /* Información del creador con estilo */
+    /* Información del creador */
     .dev-info {
       background: linear-gradient(135deg, #ffe6f0, #f8dafa);
       border-radius: 16px;
       padding: 1.2rem;
       margin: 1.5rem 0;
       border: 2px solid #ffb6c1;
-      box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15);
+      box-shadow: 0 6px 16px rgba(255, 105, 180, 0.25);
       text-align: center;
     }
 
@@ -158,13 +158,13 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 1.05rem;
-      box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
       transition: all 0.3s;
     }
 
     .whatsapp-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
     }
 
     /* Cerrar menú */
@@ -184,7 +184,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.6);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -206,8 +206,8 @@
       max-width: 400px;
       padding: 1.8rem;
       position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      border: 3px solid #ffb6c1;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+      border: 4px solid #ffb6c1;
       animation: popIn 0.3s;
     }
 
@@ -263,21 +263,21 @@
       text-decoration: none;
       font-weight: 500;
       font-size: 1.05rem;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
       transition: all 0.3s;
     }
 
     .error-whatsapp:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 211, 102, 0.5);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.6);
     }
 
     /* Animación RGB suave */
     @keyframes rgbPulse {
-      0% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.5); }
-      33% { box-shadow: 0 0 20px rgba(140, 100, 255, 0.5); }
-      66% { box-shadow: 0 0 20px rgba(255, 190, 100, 0.5); }
-      100% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.5); }
+      0% { box-shadow: 0 0 25px rgba(255, 105, 180, 0.7); }
+      33% { box-shadow: 0 0 25px rgba(140, 100, 255, 0.7); }
+      66% { box-shadow: 0 0 25px rgba(255, 190, 100, 0.7); }
+      100% { box-shadow: 0 0 25px rgba(255, 105, 180, 0.7); }
     }
 
     @keyframes float {
@@ -307,7 +307,7 @@
       width: 100%;
       height: auto;
       border: 4px solid #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     /* Pantalla de bloqueo */
@@ -317,8 +317,8 @@
       max-width: 420px;
       background: rgba(255, 255, 255, 0.98);
       border-radius: 30px;
-      box-shadow: 0 12px 40px rgba(255, 105, 180, 0.3);
-      border: 3px solid transparent;
+      box-shadow: 0 14px 50px rgba(255, 105, 180, 0.4);
+      border: 4px solid transparent;
       background-clip: padding-box;
       position: relative;
       z-index: 1;
@@ -327,12 +327,12 @@
     .lock-screen::before {
       content: '';
       position: absolute;
-      inset: -3px;
+      inset: -4px;
       background: linear-gradient(45deg, #ff80ab, #ba68c8, #ffcc80);
-      border-radius: 33px;
+      border-radius: 34px;
       z-index: -1;
       animation: backgroundShift 6s ease-in-out infinite;
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .lock-screen h2 {
@@ -363,9 +363,9 @@
       border-radius: 16px;
       margin: 1.3rem auto;
       width: 90%;
-      border: 3px solid #ff80ab;
+      border: 4px solid #ff80ab;
       letter-spacing: 4px;
-      box-shadow: 0 6px 15px rgba(255, 105, 180, 0.2);
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
     }
 
     /* Teclado */
@@ -382,17 +382,17 @@
       padding: 1.1rem 0;
       background: linear-gradient(135deg, #fff5f8, #ffe6f0);
       color: #e91e63;
-      border: 3px solid #ff80ab;
+      border: 4px solid #ff80ab;
       border-radius: 14px;
       cursor: pointer;
       transition: all 0.25s ease;
-      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+      box-shadow: 0 6px 14px rgba(255, 105, 180, 0.3);
     }
 
     .key:hover {
       background: linear-gradient(135deg, #ffe6f0, #f8dafa);
       transform: translateY(-4px);
-      box-shadow: 0 8px 18px rgba(255, 105, 180, 0.35);
+      box-shadow: 0 10px 22px rgba(255, 105, 180, 0.45);
     }
 
     .key:active {
@@ -410,14 +410,14 @@
       border: none;
       border-radius: 32px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
+      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.5);
       transition: all 0.3s ease;
       animation: float 3s ease-in-out infinite;
     }
 
     .btn-iniciar:hover {
       transform: scale(1.08) translateY(-2px);
-      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.5);
+      box-shadow: 0 12px 30px rgba(233, 30, 99, 0.6);
     }
 
     /* Texto discreto */
@@ -440,8 +440,8 @@
       background: rgba(255, 255, 255, 0.95);
       border-radius: 30px;
       padding: 2.4rem 2rem;
-      box-shadow: 0 15px 40px rgba(255, 105, 180, 0.25);
-      border: 4px solid transparent;
+      box-shadow: 0 18px 50px rgba(255, 105, 180, 0.3);
+      border: 5px solid transparent;
       background-clip: padding-box;
       position: relative;
     }
@@ -451,7 +451,7 @@
       position: absolute;
       inset: 0;
       border-radius: 30px;
-      padding: 4px;
+      padding: 5px;
       background: linear-gradient(45deg, #ff80ab, #ba68c8);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: destination-out;
@@ -469,7 +469,6 @@
       margin-bottom: 1.8rem;
     }
 
-    /* Letras de la carta: visibles */
     .letter {
       font-family: 'Dancing Script', cursive;
       font-size: 1.6rem;
@@ -553,8 +552,8 @@
       background: linear-gradient(135deg, #ffe6f0, #f8dafa);
       border-radius: 20px;
       padding: 1.4rem;
-      border: 3px solid #ffb6c1;
-      box-shadow: 0 6px 18px rgba(233, 30, 99, 0.2);
+      border: 4px solid #ffb6c1;
+      box-shadow: 0 8px 22px rgba(233, 30, 99, 0.3);
       font-family: 'Dancing Script', cursive;
       font-size: 1.8rem;
       color: #e91e63;
@@ -567,7 +566,27 @@
       50% { transform: scale(1.03); }
     }
 
-    /* Media queries */
+    /* Explosión de corazones */
+    .heart-explosion {
+      position: absolute;
+      pointer-events: none;
+      font-size: 24px;
+      opacity: 0;
+      animation: explode 1s ease-out forwards;
+      z-index: 100;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(0.2) translate(0, 0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1.5) translate(var(--tx), var(--ty));
+        opacity: 0;
+      }
+    }
+
     @media (max-width: 480px) {
       .menu-btn { top: 15px; left: 15px; width: 45px; height: 45px; }
       .menu { width: 260px; }
@@ -605,7 +624,7 @@
 </head>
 <body>
 
-  <!-- Botón del menú (3 rayitas) -->
+  <!-- Botón del menú -->
   <div class="menu-btn" onclick="toggleMenu()">
     <span></span>
     <span></span>
@@ -614,7 +633,7 @@
 
   <!-- Menú desplegable -->
   <div id="menu" class="menu">
-    <img src="https://i.postimg.cc/MThLTg2k/Screenshot-20250826-182522.jpg" alt="Logo de AnthZz Berrocal" class="menu-logo">
+    <img src=" https://i.postimg.cc/MThLTg2k/Screenshot-20250826-182522.jpg " alt="Logo de AnthZz Berrocal" class="menu-logo">
     <div class="close-menu" onclick="toggleMenu()">✕</div>
 
     <h3>ℹ️ Sobre mí</h3>
@@ -627,16 +646,16 @@
 
     <h3>💬 Contáctame</h3>
     <p>Si quieres personalizar esta carta o desarrollar proyectos juntos, escríbeme por WhatsApp.</p>
-    <a href="https://wa.me/51937556459" target="_blank" class="whatsapp-btn">💬 Contactar por WhatsApp</a>
+    <a href="https://wa.me/51937556459 " target="_blank" class="whatsapp-btn">💬 Contactar por WhatsApp</a>
   </div>
 
-  <!-- Cuadro de error personalizado -->
+  <!-- Cuadro de error -->
   <div id="errorModal" class="error-modal">
     <div class="error-content">
       <div class="close-error" onclick="cerrarError()">×</div>
       <h3>⚠️ Código Incorrecto</h3>
       <p>El código que ingresaste es incorrecto. Comunícate con el creador para obtener el acceso correcto.</p>
-      <a href="https://wa.me/51937556459" target="_blank" class="error-whatsapp">📱 Contactar por WhatsApp</a>
+      <a href="https://wa.me/51937556459 " target="_blank" class="error-whatsapp">📱 Contactar por WhatsApp</a>
     </div>
   </div>
 
@@ -646,7 +665,7 @@
     <p>👇INGRESA EL CÓDIGO DE ACCESO 👇</p>
 
     <div class="gif-frame">
-      <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZTAxbHV0Mm1rYmI2emc3ZmdvcGdka2szMGMzMHl4ZXlhcmEzN3A4cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y62ofc4S1Vst2/giphy.gif" alt="Corazones flotando" width="200" height="200" />
+      <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZTAxbHV0Mm1rYmI2emc3ZmdvcGdka2szMGMzMHl4ZXlhcmEzN3A4cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Y62ofc4S1Vst2/giphy.gif " alt="Corazones flotando" width="200" height="200" />
     </div>
 
     <div id="display" class="key-display"></div>
@@ -669,7 +688,7 @@
     <button class="btn-iniciar" onclick="submitKey()">Iniciar</button>
 
     <div class="gif-frame">
-      <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyMzl0NTh2ZHhmOHF1Nm45NHNqcmN1bTVrdHNtbDgwbjZpZTFqMno3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11TyfGbDbBv4be/giphy.gif" alt="Bailarina de amor" width="200" height="200" />
+      <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyMzl0NTh2ZHhmOHF1Nm45NHNqcmN1bTVrdHNtbDgwbjZpZTFqMno3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11TyfGbDbBv4be/giphy.gif " alt="Bailarina de amor" width="200" height="200" />
     </div>
 
     <p class="dev-text">Desarrollado por AnthZz Berrocal</p>
@@ -689,32 +708,98 @@
     </div>
 
     <div class="gif-frame" style="margin-top: 1.5rem;">
-      <img src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyMHR3Ym5zNjF2emowZnZ5cWltZmJ6ZGRuaDM2ZXU5eDR1bWl6aHd1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OJZZsbgcYvSSz5yA7K/giphy.gif" alt="Explosión de corazones" width="220" height="220" />
+      <img src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyMHR3Ym5zNjF2emowZnZ5cWltZmJ6ZGRuaDM2ZXU5eDR1bWl6aHd1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OJZZsbgcYvSSz5yA7K/giphy.gif " alt="Explosión de corazones" width="220" height="220" />
     </div>
 
     <p class="dev-text">Desarrollado por AnthZz Berrocal</p>
   </div>
 
-  <!-- Reproductor de audio desde Jumpshare -->
-  <audio id="bgMusic" loop>
-    <source src="https://jumpshare.com/s/VICul1e9DnoH0xmuNAwA" type="audio/mp3">
-    Tu navegador no soporta audio.
-  </audio>
+  <!-- Reproductor de audio de YouTube (oculto) -->
+  <iframe 
+    id="bgMusic" 
+    src="https://www.youtube.com/embed/CXPIZbKIHdQ?enablejsapi=1&autoplay=0&controls=0&showinfo=0&rel=0&loop=1&playlist=CXPIZbKIHdQ" 
+    frameborder="0" 
+    allow="autoplay; encrypted-media" 
+    allowfullscreen
+    style="position: fixed; bottom: -100%; right: -100%; width: 1px; height: 1px; visibility: hidden;">
+  </iframe>
 
   <script>
-    let input = '';
-    const correctKey = '25/08/25'; // Código de acceso
-    let nombreYo = 'Isaac Joon-pyo'; // Nombre fijo
-    let nombreElla = 'Roxana'; // Nombre fijo
+    // YouTube API se cargará asíncronamente
+    let player;
+    let hasPlayed = false;
 
-    // Reproducir música al interactuar
+    // Cargar YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('bgMusic', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      // No reproducir aún, esperar interacción
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        player.seekTo(0);
+      }
+    }
+
+    // Reproducir música al interactuar con la pantalla
     document.body.addEventListener('click', function() {
-      const audio = document.getElementById('bgMusic');
-      if (audio && !audio.hasPlayed) {
-        audio.play().catch(e => console.log("Error al reproducir audio:", e));
-        audio.hasPlayed = true;
+      if (player && !hasPlayed) {
+        player.playVideo();
+        hasPlayed = true;
       }
     }, { once: true });
+
+    // También activar con cualquier toque o clic
+    document.addEventListener('touchstart', function() {
+      if (player && !hasPlayed) {
+        player.playVideo();
+        hasPlayed = true;
+      }
+    }, { once: true });
+
+    // --- Resto del código original ---
+
+    let input = '';
+    const correctKey = '25/08/25';
+    let nombreYo = 'Isaac Joon-pyo';
+    let nombreElla = 'Roxana';
+
+    // Explosión de corazones al tocar
+    document.body.addEventListener('click', function(e) {
+      const hearts = ['❤️', '💖', '💕', '💓', '💗', '💞', '💘', '💝', '💌', '🧡'];
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart-explosion';
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+
+        const angle = (i / 12) * 2 * Math.PI;
+        const distance = 100 + Math.random() * 50;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+
+        heart.style.left = `${e.clientX}px`;
+        heart.style.top = `${e.clientY}px`;
+        heart.style.setProperty('--tx', `${tx}px`);
+        heart.style.setProperty('--ty', `${ty}px`);
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 1000);
+      }
+    });
 
     function addDigit(digit) {
       if (input.length < 8) {
@@ -739,11 +824,9 @@
         typeWriter();
         createHearts();
 
-        // Intentar reproducir música
-        const audio = document.getElementById('bgMusic');
-        if (audio && !audio.hasPlayed) {
-          audio.play().catch(e => console.log("No se pudo reproducir:", e));
-          audio.hasPlayed = true;
+        if (player && !hasPlayed) {
+          player.playVideo();
+          hasPlayed = true;
         }
       } else {
         document.getElementById('errorModal').classList.add('active');
@@ -809,20 +892,16 @@ ${nombreYo} 💖`;
       setTimeout(type, 300);
     }
 
-    // Corazones flotando mejorados
     function createHearts() {
       const hearts = ['❤️', '💖', '💕', '💓', '💗', '💞', '💘', '💌'];
-      
       const random = (min, max) => Math.random() * (max - min) + min;
 
       setInterval(() => {
         const heart = document.createElement('div');
         heart.className = 'floating-heart';
         heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-
         heart.style.left = random(5, 90) + 'vw';
 
-        // Clases aleatorias
         const size = Math.random();
         if (size < 0.3) heart.classList.add('heart-small');
         else if (size > 0.8) heart.classList.add('heart-large');
@@ -832,7 +911,6 @@ ${nombreYo} 💖`;
         else if (speed > 0.7) heart.classList.add('heart-fast');
 
         heart.style.animationDelay = random(0, 5) + 's';
-
         document.body.appendChild(heart);
 
         setTimeout(() => {
